@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @member.name %>
+</p>
+
+<p>
+  <b>Dob:</b>
+  <%= @member.dob %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @member.gender %>
+</p>
+
+<p>
+  <b>District:</b>
+  <%= @member.district %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @member.state %>
+</p>
+
+<p>
+  <b>Schl club name:</b>
+  <%= @member.schl_club_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>

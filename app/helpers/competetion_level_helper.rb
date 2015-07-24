@@ -1,0 +1,2 @@
+module CompetetionLevelHelper
+end
