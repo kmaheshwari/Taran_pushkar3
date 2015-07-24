@@ -1,0 +1,21 @@
+<%= form_for(@competetion_level) do |f| %>
+  <% if @competetion_level.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@competetion_level.errors.count, "error") %> prohibited this competetion_level from being saved:</h2>
+
+      <ul>
+      <% @competetion_level.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :comp_name %><br />
+    <%= f.text_field :comp_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

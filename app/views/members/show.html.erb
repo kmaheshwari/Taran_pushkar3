@@ -1,35 +1,34 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <strong>Name:</strong>
   <%= @member.name %>
 </p>
 
 <p>
-  <b>Dob:</b>
+  <strong>Dob:</strong>
   <%= @member.dob %>
 </p>
 
 <p>
-  <b>Gender:</b>
+  <strong>Gender:</strong>
   <%= @member.gender %>
 </p>
 
 <p>
-  <b>District:</b>
+  <strong>District:</strong>
   <%= @member.district %>
 </p>
 
 <p>
-  <b>State:</b>
+  <strong>State:</strong>
   <%= @member.state %>
 </p>
 
 <p>
-  <b>Schl club name:</b>
-  <%= @member.schl_club_name %>
+  <strong>School name or club name:</strong>
+  <%= @member.school_name_or_club_name %>
 </p>
-
 
 <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>
