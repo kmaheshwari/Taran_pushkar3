@@ -40,7 +40,7 @@
             <label class="col-md-2 control-label"  for="name">Name</label>
 
             <div class="col-sm-3">
-              <input type="text" id="name" name="name" placeholder="" class="input-xlarge">
+              <input type="text" id="name" name="name" placeholder="" class="input-xlarge form-control">
                <br>
             </div>
           </div>
@@ -51,10 +51,8 @@
             <!-- Date Of Birth -->
             <label class="col-md-2 control-label" for="email">Date Of Birth</label>
             <div class="col-sm-3">
-              
-              <%= f.date_select :dob %>
-              <!-- <input type="text" id="email" name="email" placeholder="" class="input-xlarge"> -->
-             
+              <input type="text" data-provide='datepicker' placeholder="Select date of birth" class="input-xlarge form-control" >
+                         
             </div>
           </div>
         </div>
@@ -65,7 +63,7 @@
 
 
           <div class="col-sm-3">
-            <select class="form-control round-form" name="gender" class = "input-xlarge">
+            <select class="form-control round-form" name="gender" class = "input-xlarge form-control">
               <option value="district">Male</option>
               <option value="state">Female</option>
             </select>
@@ -79,7 +77,7 @@
             <!-- District-->
             <label class="col-md-2 control-label" for="district">District</label>
             <div class="col-sm-3">
-              <input type="text" id="district" name="district" placeholder="" class="input-xlarge">
+              <input type="text" id="district" name="district" placeholder="" class="input-xlarge form-control">
               
             </div>
           </div>
@@ -90,7 +88,7 @@
             <!-- State -->
             <label class="col-md-2 control-label"  for="state">State</label>
             <div class="col-sm-3">
-              <input type="text" id="state" name="state" placeholder="" class="input-xlarge">
+              <input type="text" id="state" name="state" placeholder="" class="input-xlarge form-control">
               
             </div>
           </div>
@@ -101,7 +99,7 @@
             <!-- School Name/Club Name -->
             <label class="col-md-2 control-label"  for="school_name">School Name/Club Name</label>
             <div class="col-sm-3">
-              <input type="text" id="school_name" name="school_name" placeholder="" class="input-xlarge">
+              <input type="text" id="school_name" name="school_name" placeholder="" class="input-xlarge form-control">
               
             </div>
           </div>
