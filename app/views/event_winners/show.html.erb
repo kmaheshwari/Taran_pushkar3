@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Points:</b>
+  <%= @event_winner.points %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_winner_path(@event_winner) %> |
+<%= link_to 'Back', event_winners_path %>

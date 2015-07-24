@@ -1,0 +1,21 @@
+<%= form_for(@grp_event_winner) do |f| %>
+  <% if @grp_event_winner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@grp_event_winner.errors.count, "error") %> prohibited this grp_event_winner from being saved:</h2>
+
+      <ul>
+      <% @grp_event_winner.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :gpoints %><br />
+    <%= f.number_field :gpoints %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

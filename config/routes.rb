@@ -1,4 +1,22 @@
 TaranPushkar3::Application.routes.draw do
+  resources :grp_event_winners
+
+
+  resources :event_winners
+
+
+  resources :race_timing_grp_evnts
+
+
+  resources :race_timing_ind_evnts
+
+
+  resources :group_events
+
+
+  resources :events
+
+
   resources :members
 
   # The priority is based upon order of creation:

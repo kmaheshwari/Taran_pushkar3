@@ -1,0 +1,27 @@
+<h1>Listing race_timing_grp_evnts</h1>
+
+<table>
+  <tr>
+    <th>Gminute</th>
+    <th>Gsecond</th>
+    <th>Gmicro second</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @race_timing_grp_evnts.each do |race_timing_grp_evnt| %>
+  <tr>
+    <td><%= race_timing_grp_evnt.gminute %></td>
+    <td><%= race_timing_grp_evnt.gsecond %></td>
+    <td><%= race_timing_grp_evnt.gmicro_second %></td>
+    <td><%= link_to 'Show', race_timing_grp_evnt %></td>
+    <td><%= link_to 'Edit', edit_race_timing_grp_evnt_path(race_timing_grp_evnt) %></td>
+    <td><%= link_to 'Destroy', race_timing_grp_evnt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Race timing grp evnt', new_race_timing_grp_evnt_path %>

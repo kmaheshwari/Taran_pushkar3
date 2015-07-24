@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  grp_event_name: MyString
+  grp_event_type: MyString
+
+two:
+  grp_event_name: MyString
+  grp_event_type: MyString

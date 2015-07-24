@@ -1,0 +1,29 @@
+<%= form_for(@race_timing_ind_evnt) do |f| %>
+  <% if @race_timing_ind_evnt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@race_timing_ind_evnt.errors.count, "error") %> prohibited this race_timing_ind_evnt from being saved:</h2>
+
+      <ul>
+      <% @race_timing_ind_evnt.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :minute %><br />
+    <%= f.number_field :minute %>
+  </div>
+  <div class="field">
+    <%= f.label :second %><br />
+    <%= f.number_field :second %>
+  </div>
+  <div class="field">
+    <%= f.label :micro_second %><br />
+    <%= f.number_field :micro_second %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

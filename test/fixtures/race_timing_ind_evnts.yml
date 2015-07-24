@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  minute: 1
+  second: 1
+  micro_second: 1
+
+two:
+  minute: 1
+  second: 1
+  micro_second: 1

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Gminute:</b>
+  <%= @race_timing_grp_evnt.gminute %>
+</p>
+
+<p>
+  <b>Gsecond:</b>
+  <%= @race_timing_grp_evnt.gsecond %>
+</p>
+
+<p>
+  <b>Gmicro second:</b>
+  <%= @race_timing_grp_evnt.gmicro_second %>
+</p>
+
+
+<%= link_to 'Edit', edit_race_timing_grp_evnt_path(@race_timing_grp_evnt) %> |
+<%= link_to 'Back', race_timing_grp_evnts_path %>

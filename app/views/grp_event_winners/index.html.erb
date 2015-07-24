@@ -1,0 +1,23 @@
+<h1>Listing grp_event_winners</h1>
+
+<table>
+  <tr>
+    <th>Gpoints</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @grp_event_winners.each do |grp_event_winner| %>
+  <tr>
+    <td><%= grp_event_winner.gpoints %></td>
+    <td><%= link_to 'Show', grp_event_winner %></td>
+    <td><%= link_to 'Edit', edit_grp_event_winner_path(grp_event_winner) %></td>
+    <td><%= link_to 'Destroy', grp_event_winner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Grp event winner', new_grp_event_winner_path %>

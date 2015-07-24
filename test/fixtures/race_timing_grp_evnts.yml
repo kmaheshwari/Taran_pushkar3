@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  gminute: 1
+  gsecond: 1
+  gmicro_second: 1
+
+two:
+  gminute: 1
+  gsecond: 1
+  gmicro_second: 1
