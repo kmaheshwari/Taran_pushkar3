@@ -41,6 +41,8 @@ GEM
     coffee-script-source (1.9.1.1)
     erubis (2.7.0)
     execjs (2.5.2)
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     hike (1.2.3)
     i18n (0.7.0)
     journey (1.0.4)
@@ -111,12 +113,10 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-datepicker-rails
   coffee-rails (~> 3.2.1)
+  font-awesome-rails
   jquery-rails
   mysql2
   rails (= 3.2.20)
   sass-rails (~> 3.2.3)
   therubyracer
   uglifier (>= 1.0.3)
-
-BUNDLED WITH
-   1.10.5

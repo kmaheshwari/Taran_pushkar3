@@ -20,7 +20,7 @@
         
         <div class="form-group">
           <!-- Competition-level -->
-          <label class="col-md-2 control-label"  for="competition_level">Competition Level</label>
+          <label class="col-md-2 label-control"  for="competition_level">Competition Level</label>
 
 
           <div class="col-sm-3">
@@ -33,81 +33,90 @@
           </div>
         
         </div>
+        
 
         <div class="form-group">
-          <div class="control-group">
-            <!-- Name -->
-            <label class="col-md-2 control-label"  for="name">Name</label>
-
-            <div class="col-sm-3">
-              <input type="text" id="name" name="name" placeholder="" class="input-xlarge form-control">
-               <br>
+                <div class="col-sm-2 label-control">
+                  <%= f.label :Name %>
+                </div>
+                <div class="col-sm-4">
+                  <%= f.text_field :name, :placeholder => "Enter Full Name", :class => 'form-control' %>
+                </div>
             </div>
-          </div>
-        </div>
+            <!-- Name Field -->
        
         <div class="form-group">
-          <div class="control-group">
-            <!-- Date Of Birth -->
-            <label class="col-md-2 control-label" for="email">Date Of Birth</label>
-            <div class="col-sm-3">
-              <input type="text" data-provide='datepicker' placeholder="Select date of birth" class="input-xlarge form-control" >
-                         
+              <div class="col-sm-2 label-control">
+                <%= f.label :Dob %>
+              </div>
+              <div class="col-sm-10">
+                <%= f.text_field :dob, :placeholder => "Select Your Date Of Birth" ,:'data-behaviour' => 'datepicker'%>
+                <script type="text/javascript">
+  $('[data-behaviour~=datepicker]').datepicker();
+</script>
+                
+              </div>
             </div>
-          </div>
-        </div>
+            <!-- Date Of Birth -->
+              
+                         
+           
 
         <div class="form-group">
-          <!-- Gender -->
-          <label class="col-md-2 control-label"  for="gender">Gender</label>
-
-
-          <div class="col-sm-3">
-            <select class="form-control round-form" name="gender" class = "input-xlarge form-control">
-              <option value="district">Male</option>
-              <option value="state">Female</option>
-            </select>
-          
-          </div>
-        
-        </div>
+          <div class="form-group">
+              <div class="col-sm-2 label-control">          
+                <%= f.label :Gender %>
+              </div>           
+              <div class="col-sm-4">   
+                <%= f.radio_button :gender, 'male' %>        
+                <%= label :Gender, 'Male' %>
+                <%= f.radio_button :gender, 'female' %>
+                <%= label :Gender, 'Female' %>
+                <%= f.radio_button :gender, 'other' %>
+                <%= label :Gender, 'Other' %>
+                <p class="help-block"> Select Your Gender </p>
+              </div>
+              <span class="col-sm-offset-2 col-sm-10">        
+              
+              </span>
+            </div>
+            <!-- Gender Field -->
      
         <div class="form-group">
-          <div class="control-group">
-            <!-- District-->
-            <label class="col-md-2 control-label" for="district">District</label>
-            <div class="col-sm-3">
-              <input type="text" id="district" name="district" placeholder="" class="input-xlarge form-control">
-              
+                <div class="col-sm-2 label-control">
+                  <%= f.label :District %>
+                </div>
+                <div class="col-sm-4">
+                  <%= f.text_field :district, :placeholder => "Enter District", :class => 'form-control' %>
+                </div>
             </div>
-          </div>
-        </div>
+            <!-- District Field -->
 
         <div class="form-group">
-          <div class="control-group">
-            <!-- State -->
-            <label class="col-md-2 control-label"  for="state">State</label>
-            <div class="col-sm-3">
-              <input type="text" id="state" name="state" placeholder="" class="input-xlarge form-control">
-              
+              <div class="col-sm-2 label-control">
+                <%= f.label :State %>
+              </div>
+              <div class="col-sm-10">
+                <%= f.select :state, options_for_select([ "Select", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha" , "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"]), :class => 'genForm_dropBox' %>
+                
+                <p class="help-block"> Select State </p>
+              </div>
             </div>
-          </div>
-        </div>
+            <!-- State Field -->
 
         <div class="form-group">
-          <div class="control-group">
-            <!-- School Name/Club Name -->
-            <label class="col-md-2 control-label"  for="school_name">School Name/Club Name</label>
-            <div class="col-sm-3">
-              <input type="text" id="school_name" name="school_name" placeholder="" class="input-xlarge form-control">
-              
+                <div class="col-sm-2 label-control">
+                  <%= f.label :"School/Club Name" %>
+                </div>
+                <div class="col-sm-4">
+                  <%= f.text_field :schl_club_name, :placeholder => "Enter School/Club Name", :class => 'form-control' %>
+                </div>
             </div>
-          </div>
-        </div>
+            <!-- School/Club Field -->
 
         <div class="form-group">
           <!-- Event selection -->
-          <label class="col-md-2 control-label"  for="event">Events</label>
+          <label class="col-md-2 label-control"  for="event">Events</label>
 
 
           <div class="col-sm-2">
@@ -154,7 +163,7 @@
 
         <div class="form-group">
           <!-- Event selection -->
-          <label class="col-md-2 control-label"  for="group_event">Group Events</label>
+          <label class="col-md-2 label-control"  for="group_event">Group Events</label>
 
 
           <div class="col-sm-2">
