@@ -20,16 +20,15 @@
         
         <div class="form-group">
           <!-- Competition-level -->
-          <label class="col-md-2 label-control"  for="competition_level">Competition Level</label>
+          <div class="col-sm-2 label-control">
+                  <%= f.label :Competition_level %>
+          </div>
+          <!-- <label class="col-md-2 label-control"  for="competition_level">Competition Level</label> -->
 
 
           <div class="col-sm-3">
-            <select class="form-control round-form" name="competition_level" class = "input-xlarge">
-              <option value="district">District</option>
-              <option value="state">State</option>
-              <option value="national">National</option>
-            </select>
-          
+            <%= f.select :comp_name, options_for_select([ "Select","District","State","National"]) %>
+                        
           </div>
         
         </div>
