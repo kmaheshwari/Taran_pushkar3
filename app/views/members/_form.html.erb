@@ -24,50 +24,44 @@
                   <%= f.label :Competition_level %>
           </div>
           <!-- <label class="col-md-2 label-control"  for="competition_level">Competition Level</label> -->
-
-
-          <div class="col-sm-3">
-            <%= f.select :comp_name, options_for_select([ "Select","District","State","National"] ) %>
-                        
+          <div class="col-sm-4">
+            <%= f.select( :comp_name, options_for_select([ "Select","District","State","National"]), {} , {:class => "form-control"}) %>
           </div>
-        
         </div>
         
 
         <div class="form-group">
-                <div class="col-sm-2 label-control">
-                  <%= f.label :Name %>
-                </div>
-                <div class="col-sm-4">
-                  <%= f.text_field :name, :placeholder => "Enter Full Name", :class => 'form-control' %>
-                </div>
-            </div>
+          <div class="col-sm-2 label-control">
+            <%= f.label :Name %>
+          </div>
+          <div class="col-sm-4">
+            <%= f.text_field :name, :placeholder => "Enter Full Name", :class => 'form-control' %>
+          </div>
+        </div>
             <!-- Name Field -->
        
         <div class="form-group">
               <div class="col-sm-2 label-control">
                 <%= f.label :Dob %>
               </div>
-              <div class="col-sm-10">
-                <%= f.text_field :dob, :placeholder => "Select Your Date Of Birth" ,:'data-behaviour' => 'datepicker'%>
+              <div class="col-sm-4">
+                <%= f.text_field(:dob, :placeholder => "Select Your Date Of Birth" ,:'data-behaviour' => 'datepicker', :class => "form-control")%>
                 <script type="text/javascript">
-  $('[data-behaviour~=datepicker]').datepicker();
-</script>
+                  $('[data-behaviour~=datepicker]').datepicker();
+                </script>
                 
               </div>
             </div>
             <!-- Date Of Birth -->
               
-                         
-           
-
-        
+                     
           <div class="form-group">
               <div class="col-sm-2 label-control">          
                 <%= f.label :Gender %>
-              </div>           
-              <div class="col-sm-4">   
-                <%= f.radio_button :gender, 'male' %>        
+              </div>     
+                  
+              <div class="btn-group col-sm-4" >   
+                <%= f.radio_button :gender, 'male' %>
                 <%= label :Gender, 'Male' %>
                 <%= f.radio_button :gender, 'female' %>
                 <%= label :Gender, 'Female' %>
@@ -75,6 +69,7 @@
                 <%= label :Gender, 'Other' %>
                 <p class="help-block"> Select Your Gender </p>
               </div>
+              
               <span class="col-sm-offset-2 col-sm-10">        
               
               </span>
@@ -95,8 +90,8 @@
               <div class="col-sm-2 label-control">
                 <%= f.label :State %>
               </div>
-              <div class="col-sm-10">
-                <%= f.select :state, options_for_select([ "Select", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha" , "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"]), :class => 'genForm_dropBox' %>
+              <div class="col-sm-4">
+                <%= f.select( :state, options_for_select([ "Select", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha" , "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"]),{}, { :class => "form-control genForm_dropBox"} )%>
                 
                 <p class="help-block"> Select State </p>
               </div>
@@ -198,9 +193,12 @@
             <!-- Button -->
             <div class="controls span7 text-center">
               <button class="btn btn-success">Register</button>
+              <%= button_tag "Reset", type: :reset, :class => "btn btn-success" %>
             </div>
           </div>
         </div>
+
+
 
       </fieldset>
     </div>
@@ -218,4 +216,3 @@
     <script src="js/plugins/morris/morris-data.js"></script>
       
 <% end %>
-
