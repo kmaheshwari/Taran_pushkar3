@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150728085647) do
+ActiveRecord::Schema.define(:version => 20150728093030) do
 
   create_table "competetion_levels", :force => true do |t|
     t.string   "comp_name"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(:version => 20150728085647) do
 
   create_table "grp_event_winners", :force => true do |t|
     t.integer  "gpoints"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "member_events", :force => true do |t|
+    t.integer  "member_id"
+    t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
