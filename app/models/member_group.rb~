@@ -3,5 +3,3 @@ class MemberGroup < ActiveRecord::Base
   belongs_to :member  
   belongs_to :group_event
 end
-
-

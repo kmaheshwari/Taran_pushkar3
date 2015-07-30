@@ -14,7 +14,7 @@ end
 
 #field not remain blank
 class  Member < ActiveRecord::Base
-  validates :name, :gender, :dob, :state , :district , :schl_club_name,presence: true
+  validates :name, :gender, :dob, :state , :district , :schl_club_name
 end
 
 #field must contain alphabets
