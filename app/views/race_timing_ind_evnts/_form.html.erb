@@ -1,91 +1,33 @@
-<%= form_for(@race_timing_ind_evnt) do |f| %>
+<h1>Event Details</h1>
+
+<%= form_for(@race_timing_ind_evnt, :html => { :class => 'form-horizontal'}) do |f| %>
   <% if @race_timing_ind_evnt.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@race_timing_ind_evnt.errors.count, "error") %> prohibited this race_timing_ind_evnt from being saved:</h2>
+      <h2><%= pluralize(@race_timing_ind_evnt.errors.count, "error") %> prohibited this member from being saved:</h2>
 
       <ul>
-      <% @race_timing_ind_evnt.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <% @race_timing_ind_evnt.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-
-  <div class="col-lg-6">
-                        <h2>Bordered with Striped Rows</h2>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Minutes</th>
-                                        <th>Seconds</th>
-                                        <th>MicroSeconds</th>
-                                        <th>Present</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td><%= f.text_field :minute, :class => 'form-control' %></td>
-                                        <td>32.3%</td>
-                                        <td>$321.33</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/about.html</td>
-                                        <td><%= f.text_field :minute, :class => 'form-control' %></td>
-                                        <td>33.3%</td>
-                                        <td>$234.12</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/sales.html</td>
-                                        <td><%= f.text_field :minute, :class => 'form-control' %></td>
-                                        <td>21.3%</td>
-                                        <td>$16.34</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/blog.html</td>
-                                        <td><%= f.text_field :minute, :class => 'form-control' %></td>
-                                        <td>89.3%</td>
-                                        <td>$1644.43</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/404.html</td>
-                                        <td><%= f.text_field :minute, :class => 'form-control' %></td>
-                                        <td>34.3%</td>
-                                        <td>$23.52</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/services.html</td>
-                                        <td><%= f.text_field :minute, :class => 'form-control' %></td>
-                                        <td>60.3%</td>
-                                        <td>$724.32</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/blog/post.html</td>
-                                        <td><%= f.text_field :minute, :class => 'form-control' %></td>
-                                        <td>93.2%</td>
-                                        <td>$126.34</td>
-                                    </tr> 
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-  <div class="field">
-    <%= f.label :minute %><br />
-    <%= f.number_field :minute %>
-  </div>
-  <div class="field">
-    <%= f.label :second %><br />
-    <%= f.number_field :second %>
-  </div>
-  <div class="field">
-    <%= f.label :micro_second %><br />
-    <%= f.number_field :micro_second %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div role="tabpanel">
+    <div class="tab-content"> 
+      <div class="panel-body">
+        <div class="form-group">
+          
+          <div class="col-sm-2 label-control">
+                  <%= f.label :"Age Group" %>
+          </div>
+          <!-- <label class="col-md-2 label-control"  for="competition_level">Competition Level</label> -->
+          <div class="col-sm-4">
+            <%= f.select( :age, options_for_select([ "Under 14","Under 16","Under 18","Under 19"]), {} , {:class => "form-control"}) %>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
 <% end %>
+<%= link_to 'New Race timing ind evnt', new_race_timing_ind_evnt_path %>

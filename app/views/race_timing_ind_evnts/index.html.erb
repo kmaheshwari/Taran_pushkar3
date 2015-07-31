@@ -1,27 +1,19 @@
-<h1>Listing race_timing_ind_evnts</h1>
+<h1>Event Details</h1>
 
-<table>
-  <tr>
-    <th>Minute</th>
-    <th>Second</th>
-    <th>Micro second</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h3>Age Group</h3>
 
-<% @race_timing_ind_evnts.each do |race_timing_ind_evnt| %>
-  <tr>
-    <td><%= race_timing_ind_evnt.minute %></td>
-    <td><%= race_timing_ind_evnt.second %></td>
-    <td><%= race_timing_ind_evnt.micro_second %></td>
-    <td><%= link_to 'Show', race_timing_ind_evnt %></td>
-    <td><%= link_to 'Edit', edit_race_timing_ind_evnt_path(race_timing_ind_evnt) %></td>
-    <td><%= link_to 'Destroy', race_timing_ind_evnt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+    <select autofocus required>
+        <option selected value="">Event</option>
+        <% @events.each do |event| %>
+            
+                <option><%= event.event_name %></option>
+            <% end %>
+        
+    </select>   
+    <br />
+    <br />  
 
-<br />
+
+
 
 <%= link_to 'New Race timing ind evnt', new_race_timing_ind_evnt_path %>

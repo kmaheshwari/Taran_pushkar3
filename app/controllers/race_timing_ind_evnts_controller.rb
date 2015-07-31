@@ -80,4 +80,7 @@ class RaceTimingIndEvntsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def age=(input_data)
+  end
 end
