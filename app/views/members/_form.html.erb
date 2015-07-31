@@ -45,13 +45,21 @@
                 <%= f.label :Dob %>
               </div>
               <div class="col-sm-4">
-                <%= f.text_field(:dob, :placeholder => "Select Your Date Of Birth" ,:'data-behaviour' => 'datepicker', :class => "form-control")%>
+                <%= f.text_field(:dob, :placeholder => "Select Your Date Of Birth" ,:'data-behaviour' => 'datepicker', :class => "form-control fa fa-calendar")%>
+                                
                 <script type="text/javascript">
-                  $('[data-behaviour~=datepicker]').datepicker();
+                  $('[data-behaviour~=datepicker]').datepicker({
+                    "format": "yyyy-mm-dd",
+                    "weekStart": 1,  
+                    "maxDate" : 0,                  
+                    "autoclose": true
+                    }).on('changeDate', function(e) {});
+
                 </script>
-                
+
               </div>
             </div>
+             
             <!-- Date Of Birth -->
               
                      

@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20150728094954) do
 
   create_table "competetion_levels", :force => true do |t|
-    t.string   "comp_name"
+    t.string   "age_group"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20150728094954) do
   create_table "member_events", :force => true do |t|
     t.integer  "member_id"
     t.integer  "event_id"
+    t.integer  "members_id"
+    t.integer  "events_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -55,8 +57,10 @@ ActiveRecord::Schema.define(:version => 20150728094954) do
   create_table "member_groups", :force => true do |t|
     t.integer  "member_id"
     t.integer  "group_event_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer  "members_id"
+    t.integer  "group_events_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "members", :force => true do |t|

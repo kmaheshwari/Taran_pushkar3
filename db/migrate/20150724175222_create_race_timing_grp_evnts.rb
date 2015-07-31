@@ -4,7 +4,7 @@ class CreateRaceTimingGrpEvnts < ActiveRecord::Migration
       t.integer :gminute
       t.integer :gsecond
       t.integer :gmicro_second
-
+     
       t.timestamps
     end
   end

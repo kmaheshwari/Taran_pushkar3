@@ -10,5 +10,6 @@ class CreateMembers < ActiveRecord::Migration
 
       t.timestamps
     end
+    
   end
 end
