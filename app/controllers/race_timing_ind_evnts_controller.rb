@@ -3,6 +3,7 @@ class RaceTimingIndEvntsController < ApplicationController
   # GET /race_timing_ind_evnts.json
   def index
     @race_timing_ind_evnts = RaceTimingIndEvnt.all
+    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +26,8 @@ class RaceTimingIndEvntsController < ApplicationController
   # GET /race_timing_ind_evnts/new.json
   def new
     @race_timing_ind_evnt = RaceTimingIndEvnt.new
-
+    @events=Event.all
+    @members=Member.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @race_timing_ind_evnt }
@@ -81,6 +83,12 @@ class RaceTimingIndEvntsController < ApplicationController
     end
   end
 
+#temporary variables
   def age=(input_data)
   end
+  def evnt=(input_data)
+  end
+  def e_type=(input_data)
+  end
+
 end
