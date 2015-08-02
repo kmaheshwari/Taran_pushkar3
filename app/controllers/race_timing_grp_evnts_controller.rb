@@ -25,7 +25,7 @@ class RaceTimingGrpEvntsController < ApplicationController
   # GET /race_timing_grp_evnts/new.json
   def new
     @race_timing_grp_evnt = RaceTimingGrpEvnt.new
-
+    events=Event.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @race_timing_grp_evnt }
@@ -79,5 +79,14 @@ class RaceTimingGrpEvntsController < ApplicationController
       format.html { redirect_to race_timing_grp_evnts_url }
       format.json { head :no_content }
     end
+  end
+
+#temporary variables
+
+  def gage=(input_data)
+  end
+  def gevnt=(input_data)
+  end
+  def ge_type=(input_data)
   end
 end
