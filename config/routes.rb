@@ -1,4 +1,6 @@
 TaranPushkar3::Application.routes.draw do
+
+ 
   resources :grp_event_winners
 
 
@@ -18,7 +20,6 @@ TaranPushkar3::Application.routes.draw do
 
 
   resources :members
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
