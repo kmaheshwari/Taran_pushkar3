@@ -1,5 +1,6 @@
 <h3 align="center"><strong>Race Timing for Individual Events</strong></h3>
 <!--form-->
+<h1>                   Race Timing for individual Events</h1>
 <%= form_for(@race_timing_ind_evnt) do |f| %>
   <% if @race_timing_ind_evnt.errors.any? %>
     <div id="error_explanation">
@@ -59,10 +60,10 @@
 
 <!--% @members.each do |member|%--> 
   <!--%if member.event_name === @evnt && member.age_grp === @age %-->
+
       
-      <div class="col-lg-6">
                 <div class="table-responsive">
-                  
+                  <div class="col-xs-8 col-xs-offset-2">
                     <table class="table table-bordered table-hover table-striped" align="centre">
                         <thead>
                             <tr>
@@ -133,10 +134,5 @@
                         </tbody>
                     </table>
                 </div>
-              
-            </div>
         </div>
-    
-    <!--% end %>
-  <!--%end%>
 <%end%>
