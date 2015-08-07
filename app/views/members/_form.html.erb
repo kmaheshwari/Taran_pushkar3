@@ -119,53 +119,20 @@
            
     
   
-        <div class="form-group">
-          <!-- Event selection -->
-          <label class="col-md-2 label-control"  for="event">Events</label>
+        
 
           
-          <div class="col-sm-2">
-            <select class="form-control round-form" name="event1" class = "input-xlarge">
-               
-              <option value="event1">Event1</option>
-              <option value="event2">Event2</option>
-              <option value="event3">Event3</option>
-            </select>
-          </div>
+          <%= fields_for(@member_event) do |me| %>
 
-          <div class="col-sm-2">
-            <select class="form-control round-form" name="event2" class = "input-xlarge">
-              <option value="event1">Event1</option>
-              <option value="event2">Event2</option>
-              <option value="event3">Event3</option>
-            </select>
-          </div>
-
-          <div class="col-sm-2">
-            <select class="form-control round-form" name="event3" class = "input-xlarge">
-              <option value="event1">Event1</option>
-              <option value="event2">Event2</option>
-              <option value="event3">Event3</option>
-            </select>
-          </div>
-
-          <div class="col-sm-2">
-            <select class="form-control round-form" name="event4" class = "input-xlarge">
-              <option value="event1">Event1</option>
-              <option value="event2">Event2</option>
-              <option value="event3">Event3</option>
-            </select>
-          </div>
-
-          <div class="col-sm-2">
-            <select class="form-control round-form" name="event5" class = "input-xlarge">
-              <option value="event1">Event1</option>
-              <option value="event2">Event2</option>
-              <option value="event3">Event3</option>
-            </select>
-          </div>
-        
+        <div class="form-group">
+          <!-- Event selection -->
+          <div class="col-sm-2 label-control">
+                  <%= me.label "Event" %>
+                </div>
+          <%=collection_select(:events, :id , @all_events, :id, :event_name, {} ,{ :multiple => 'true'})%>
         </div>
+      <%end%>
+        
 
         <div class="form-group">
           <!-- Event selection -->

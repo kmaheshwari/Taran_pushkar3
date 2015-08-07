@@ -25,7 +25,8 @@ class MembersController < ApplicationController
   # GET /members/new.json
   def new
     @member = Member.new
-
+    @all_events = Event.all
+    @member_event = @member.member_events.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @member }
@@ -40,8 +41,13 @@ class MembersController < ApplicationController
   # POST /members
   # POST /members.json
   def create
-    @member = Member.new(params[:member])
+    @member = Member.new(params[:members])
 
+    params[:events][:id].each do |e|
+      if !e.empty?
+        @member.member_events.build( :event_id => e)
+      end
+    end
     respond_to do |format|
       if @member.save
         format.html { redirect_to @member, notice: 'Member was successfully created.' }
