@@ -35,7 +35,7 @@
           </div>
           
           <div class="col-sm-3">
-             <%= f.collection_select :gevnt, Event.all.map { |event| [event.event_name] }, { :prompt => "Please Select" },{:class => "form-control"} %> 
+             <%= collection_select( :race_timing_grp_evnt, :group_event_id, Event.all, :id, :event_name , { :prompt => "Please Select" },{ :class => "form-control"}) %>
             
           </div>
           <!--Event Type-->

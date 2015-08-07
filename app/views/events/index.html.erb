@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Event name</th>
-    <th>Event type</th>
+    
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +12,7 @@
 <% @events.each do |event| %>
   <tr>
     <td><%= event.event_name %></td>
-    <td><%= event.event_type %></td>
+   
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
     <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
