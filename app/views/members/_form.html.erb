@@ -115,55 +115,22 @@
                 </div>
             </div>
             <!-- School/Club Field -->
-
-           
-    
   
-        
-
-          
-          <%= fields_for(@member_event) do |me| %>
-
-        <div class="form-group">
+         
+         <div class="form-group">
           <!-- Event selection -->
           <div class="col-sm-2 label-control">
-                  <%= me.label "Event" %>
+                  <%= f.label "Event" %>
                 </div>
-          <%=collection_select(:events, :id , @all_events, :id, :event_name, {} ,{ :multiple => 'true'})%>
+          <%=collection_select(:members, :id , Event.all, :id, :event_name, {} ,{ :multiple => 'true'})%>
         </div>
-      <%end%>
-        
 
         <div class="form-group">
-          <!-- Event selection -->
-          <label class="col-md-2 label-control"  for="group_event">Group Events</label>
-
-
-          
-          <div class="col-sm-2">
-            <select class="form-control round-form" name="group_event1" class = "input-xlarge">
-              <option value="group_event1">Group Event1</option>
-              <option value="group_event2">Group Event2</option>
-              <option value="group_event3">Group Event3</option>
-            </select>
-          </div>
-
-          <div class="col-sm-2">
-            <select class="form-control round-form" name="group_event2" class = "input-xlarge">
-              <option value="group_event1">Group Event1</option>
-              <option value="group_event2">Group Event2</option>
-              <option value="group_event3">Group Event3</option>
-            </select>
-          </div>
-
-          <div class="col-sm-2">
-            <select class="form-control round-form" name="group_event3" class = "input-xlarge">
-              <option value="group_event1">Group Event1</option>
-              <option value="group_event2">Group Event2</option>
-              <option value="group_event3">Group Event3</option>
-            </select>
-          </div>
-         
+          <!-- Group Event selection -->
+          <div class="col-sm-2 label-control">
+                  <%= f.label "Group Event" %>
+                </div>
+          <%=collection_select(:members, :id , GroupEvent.all, :id, :grp_event_name, {} ,{ :multiple => 'true'})%>
         </div>
 
 
@@ -196,3 +163,4 @@
     <script src="js/plugins/morris/morris-data.js"></script>
       
 <% end %>
+
