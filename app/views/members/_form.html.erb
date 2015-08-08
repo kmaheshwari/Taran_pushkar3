@@ -21,7 +21,7 @@
         <div class="form-group">
           <!-- Competition-level -->
           <div class="col-sm-2 label-control">
-                  <%= f.label :"Competition level" %>
+                  <%= f.label :Competition_level %>
           </div>
           <!-- <label class="col-md-2 label-control"  for="competition_level">Competition Level</label> -->
           <div class="col-sm-4">
@@ -61,19 +61,6 @@
             </div>
              
             <!-- Date Of Birth -->
-
-            <div class="form-group">
-          <!-- Competition-level -->
-          <div class="col-sm-2 label-control">
-                  <%= f.label :"Age Group" %>
-          </div>
-          <!-- <label class="col-md-2 label-control"  for="competition_level">Competition Level</label> -->
-          <div class="col-sm-4">
-            <%= f.select( :age_group, options_for_select([ "Select","Under 14","Under 16","Under 18"]), {} , {:class => "form-control"}) %>
-          </div>
-        </div>
-
-
               
                      
           <div class="form-group">
@@ -135,20 +122,25 @@
           <div class="col-sm-2 label-control">
                   <%= f.label "Event" %>
                 </div>
-          <%=collection_select(:members, :id , Event.all, :id, :event_name, {} ,{ :multiple => 'true'})%>
+          <div class="col-sm-4">
+              <%=collection_select(:members, :id , Event.all, :id, :event_name, {} ,{ :multiple => 'true', :id => 'events'})%>
+          </div>
         </div>
+         
 
         <div class="form-group">
           <!-- Group Event selection -->
           <div class="col-sm-2 label-control">
-                  <%= f.label "Group Event" %>
+                  <%= f.label "Group Event " %>
                 </div>
-          <%=collection_select(:members, :id , GroupEvent.all, :id, :grp_event_name, {} ,{ :multiple => 'true' })%>
+              <div class="col-sm-4">
+          <%=collection_select(:members, :id , GroupEvent.all, :id, :grp_event_name, {} ,{ :multiple => 'true', :id => 'group_events'})%>
+          </div>
         </div>
 
 
 
-        <div class="form-group ">     
+        <div class="form-group">     
           <div class="control-group">
             <!-- Button -->
             <div class="controls span7 text-center">
@@ -158,6 +150,18 @@
           </div>
         </div>
 
+        <script>
+        $('#events').multipleSelect({
+            width: 400,
+            maxHeight: 400,
+            placeholder: "Select Events"
+        }).addClass('form-control');
+        
+        $('#group_events').multipleSelect({
+            width: 400,
+            placeholder: "Select Group Events"
+        });
+        </script>
 
 
       </fieldset>
