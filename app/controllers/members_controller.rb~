@@ -46,7 +46,7 @@ class MembersController < ApplicationController
     params[:members][:id].each do |e|
       if !e.empty?
         @member.member_events.build(:event_id => e)
-        #@member.member_groups.build(:group_event_id => e)
+        @member.member_groups.build(:group_event_id => e)
       end
     end
     respond_to do |format|

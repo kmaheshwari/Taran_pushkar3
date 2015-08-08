@@ -21,7 +21,7 @@
         <div class="form-group">
           <!-- Competition-level -->
           <div class="col-sm-2 label-control">
-                  <%= f.label :Competition_level %>
+                  <%= f.label :"Competition level" %>
           </div>
           <!-- <label class="col-md-2 label-control"  for="competition_level">Competition Level</label> -->
           <div class="col-sm-4">
@@ -61,6 +61,19 @@
             </div>
              
             <!-- Date Of Birth -->
+
+            <div class="form-group">
+          <!-- Competition-level -->
+          <div class="col-sm-2 label-control">
+                  <%= f.label :"Age Group" %>
+          </div>
+          <!-- <label class="col-md-2 label-control"  for="competition_level">Competition Level</label> -->
+          <div class="col-sm-4">
+            <%= f.select( :age_group, options_for_select([ "Select","Under 14","Under 16","Under 18"]), {} , {:class => "form-control"}) %>
+          </div>
+        </div>
+
+
               
                      
           <div class="form-group">
@@ -130,12 +143,12 @@
           <div class="col-sm-2 label-control">
                   <%= f.label "Group Event" %>
                 </div>
-          <%=collection_select(:members, :id , GroupEvent.all, :id, :grp_event_name, {} ,{ :multiple => 'true'})%>
+          <%=collection_select(:members, :id , GroupEvent.all, :id, :grp_event_name, {} ,{ :multiple => 'true' })%>
         </div>
 
 
 
-        <div class="form-group">     
+        <div class="form-group ">     
           <div class="control-group">
             <!-- Button -->
             <div class="controls span7 text-center">

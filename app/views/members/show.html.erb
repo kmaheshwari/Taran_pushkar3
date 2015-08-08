@@ -16,6 +16,11 @@
 </p>
 
 <p>
+  <strong>Age Group:</strong>
+  <%= @member.age_group %>
+</p>
+
+<p>
   <strong>Gender:</strong>
   <%= @member.gender %>
 </p>
@@ -34,6 +39,8 @@
   <strong>School name or club name:</strong>
   <%= @member.schl_club_name %>
 </p>
+
+
 
 <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>
