@@ -10,7 +10,17 @@ class RaceTimingIndEvntsController < ApplicationController
       format.json { render json: @race_timing_ind_evnts }
     end
   end
-
+  #temporary variables
+  
+  def evnt=(input_data)
+  end
+  def e_type=(input_data)
+  end
+  def info
+    @race_timing_ind_evnt = RaceTimingIndEvnt.new
+    @events=Event.all
+    @members=Member.all
+  end
   # GET /race_timing_ind_evnts/1
   # GET /race_timing_ind_evnts/1.json
   def show
@@ -27,7 +37,9 @@ class RaceTimingIndEvntsController < ApplicationController
   def new
     @race_timing_ind_evnt = RaceTimingIndEvnt.new
     @events=Event.all
-    @members=Member.all
+    @member=Member.all
+    @temp=MemberEvent.where("event_id IN (?)", MemberEvent.event_id)
+    #@itemlist = Member.where(['age_group=? AND event_id=?', @race_timing_ind_evnt.age, @race_timing_ind_evnt.evnt])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @race_timing_ind_evnt }

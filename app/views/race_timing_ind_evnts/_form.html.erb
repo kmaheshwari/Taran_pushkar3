@@ -58,8 +58,8 @@
 
 <br><br>
 
-<!--% @members.each do |member|%--> 
-  <!--%if member.event_name === @evnt && member.age_grp === @age %-->
+<%= @itemlist.each do |i| %>
+  
 
       
                 <div class="table-responsive">
@@ -76,7 +76,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Name1</td>
+                                <td><%=i.name%></td>
                                 <td><%= f.text_field :minute, :class => 'form-control' %></td>
                                 <td><%= f.text_field :second, :class => 'form-control' %></td>
                                 <td><%= f.text_field :micro_second, :class => 'form-control' %></td>
@@ -136,3 +136,5 @@
                 </div>
         </div>
 <%end%>
+<%end%>
+

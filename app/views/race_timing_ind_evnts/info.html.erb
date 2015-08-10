@@ -1,0 +1,68 @@
+<h3 align="center"><strong>Race Timing for Individual Events</strong></h3>
+<!--form-->
+
+<%= form_for(@race_timing_ind_evnt) do |f| %>
+  <% if @race_timing_ind_evnt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@race_timing_ind_evnt.errors.count, "error") %> prohibited this race_timing_ind_evnt from being saved:</h2>
+
+      <ul>
+      <% @race_timing_ind_evnt.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <br><br>
+      <div class="panel-body" align="center">
+        
+        <!--Age group-->
+        <div class="form-group">
+          
+          <div class="col-sm-3 label-control">
+                  <%= f.label :"Age Group" %>
+          </div>
+          
+          <div class="col-sm-3">
+            <%= f.select( :age, options_for_select([ "Under 14","Under 16","Under 18","Under 19"]), {} , {:class => "form-control"}) %>
+          </div>
+
+        </div>
+
+          <br><br><br>
+
+          <!--Event-->
+          <div class="form-group">
+          
+          <div class="col-sm-3 label-control">
+                  <%= f.label :"Event Name" %>
+          </div>
+          
+          <div class="col-sm-3">
+             <%= collection_select( :race_timing_ind_evnt, :event_id, Event.all, :id, :event_name , { :prompt => "Please Select" },{ :class => "form-control"}) %> 
+            
+          </div>
+
+        </div>
+
+          <br><br><br>
+          <!--Event Type-->
+          <div class="form-group">
+          
+          <div class="col-sm-3 label-control">
+                  <%= f.label :"Event Type" %>
+          </div>
+          
+          <div class="col-sm-3">
+            <%= f.select( :e_type, options_for_select([ "Hit","Trial"]), {} , {:class => "form-control"}) %>
+          </div>
+          
+        </div>
+
+  </div>
+
+      <%end%>
+<div>
+      <%= link_to 'Race Timing for Individual Event', new_race_timing_ind_evnt_path %></h1>
+</div>

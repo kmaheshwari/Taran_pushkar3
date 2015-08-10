@@ -61,6 +61,18 @@
             </div>
              
             <!-- Date Of Birth -->
+
+
+            <div class="form-group">
+          <!-- Competition-level -->
+          <div class="col-sm-2 label-control">
+                  <%= f.label :"Age Group" %>
+          </div>
+          <!-- <label class="col-md-2 label-control"  for="competition_level">Competition Level</label> -->
+          <div class="col-sm-4">
+            <%= f.select( :comp_name, options_for_select([ "Select","Under 14","Under 16","Under 18"]), {} , {:class => "form-control"}) %>
+          </div>
+        </div>
               
                      
           <div class="form-group">
