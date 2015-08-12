@@ -15,50 +15,12 @@
   <% end %>
 
    
-      <div class="panel-body">
-        
-        <!--Age group-->
-        <div class="form-group">
-          
-          <div class="col-sm-1 label-control">
-                  <%= f.label :"Age Group" %>
-          </div>
-          
-          <div class="col-sm-3">
-            <%= f.select( :age, options_for_select([ "Under 14","Under 16","Under 18","Under 19"]), {} , {:class => "form-control"}) %>
-          </div>
-
-          <!--Event-->
-          <div class="form-group">
-          
-          <div class="col-sm-1 label-control">
-                  <%= f.label :"Event Name" %>
-          </div>
-          
-          <div class="col-sm-3">
-             <%= collection_select( :race_timing_ind_evnt, :event_id, Event.all, :id, :event_name , { :prompt => "Please Select" },{ :class => "form-control"}) %> 
-            
-          </div>
-          <!--Event Type-->
-          <div class="form-group">
-          
-          <div class="col-sm-1 label-control">
-                  <%= f.label :"Event Type" %>
-          </div>
-          
-          <div class="col-sm-3">
-            <%= f.select( :e_type, options_for_select([ "Hit","Trial"]), {} , {:class => "form-control"}) %>
-          </div>
-          
-        </div>
-        </div>
-      </div>
-  </div>
+      
       
 
 <br><br>
 
-<%= @itemlist.each do |i| %>
+<%= @mem.each do |i| %>
   
 
       

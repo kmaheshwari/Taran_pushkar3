@@ -1,6 +1,6 @@
 class RaceTimingIndEvnt < ActiveRecord::Base
-  attr_accessible :micro_second, :minute, :second ,:age
+  attr_accessible :micro_second, :minute, :second ,:age, :evnt, :e_type
   has_many :events
-  attr_reader :age , :evnt , :e_type
-  attr_accessor :age ,:evnt
+  
+  attr_accessor :age , :e_type
 end

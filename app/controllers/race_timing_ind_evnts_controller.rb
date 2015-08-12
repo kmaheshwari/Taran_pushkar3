@@ -12,12 +12,9 @@ class RaceTimingIndEvntsController < ApplicationController
   end
   #temporary variables
   
-  def evnt=(input_data)
-  end
-  def e_type=(input_data)
-  end
-  def info
-    @race_timing_ind_evnt = RaceTimingIndEvnt.new
+  
+  def search
+    #@race_timing_ind_evnt = RaceTimingIndEvnt.new
     @events=Event.all
     @members=Member.all
   end
@@ -38,7 +35,8 @@ class RaceTimingIndEvntsController < ApplicationController
     @race_timing_ind_evnt = RaceTimingIndEvnt.new
     @events=Event.all
     @member=Member.all
-    @temp=MemberEvent.where("event_id IN (?)", MemberEvent.event_id)
+    
+    #@temp=MemberEvent.where("event_id IN (?)", MemberEvent.event_id)
     #@itemlist = Member.where(['age_group=? AND event_id=?', @race_timing_ind_evnt.age, @race_timing_ind_evnt.evnt])
     respond_to do |format|
       format.html # new.html.erb
@@ -55,13 +53,16 @@ class RaceTimingIndEvntsController < ApplicationController
   # POST /race_timing_ind_evnts.json
   def create
     @race_timing_ind_evnt = RaceTimingIndEvnt.new(params[:race_timing_ind_evnt])
+    
+        
+      
 
     respond_to do |format|
       if @race_timing_ind_evnt.save
         format.html { redirect_to @race_timing_ind_evnt, notice: 'Race timing ind evnt was successfully created.' }
         format.json { render json: @race_timing_ind_evnt, status: :created, location: @race_timing_ind_evnt }
       else
-        format.html { render action: "new" }
+        format.html { render action: "result" }
         format.json { render json: @race_timing_ind_evnt.errors, status: :unprocessable_entity }
       end
     end
@@ -95,12 +96,23 @@ class RaceTimingIndEvntsController < ApplicationController
     end
   end
 
-#temporary variables
-  def age=(input_data)
-  end
-  def evnt=(input_data)
-  end
-  def e_type=(input_data)
-  end
 
+
+  def result
+    @event=Event.find_by_event_name(params[:event_id])
+    @mid = MemberEvent.where("event_id IN (?)", @event.id).pluck(:member_id)
+    #@mid=MemberEvents.find_by_event_id(params[:event_id]).pluck(:member_id)
+    @mname=Member.where("id IN (?) AND age_group IN (?)",@mid,params[:age]).pluck(:name)
+    @meid=MemberEvent.find_by_member_id(@mname.id).pluck(:id)
+    
+    respond_to do |format|
+        format.html {render "result_path"}
+        format.json { render json: @race_timing_ind_evnt.errors, status: :unprocessable_entity}
+      
+        #format.html { redirect_to info_path }
+        
+      end
+    end
+    
+  
 end

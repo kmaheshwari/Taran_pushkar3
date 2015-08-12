@@ -1,0 +1,60 @@
+<h3 align="center"><strong>Race Timing for Individual Events</strong></h3>
+<!--form-->
+
+<%= form_tag(result_path, method: 'get') do %>
+  
+
+   <br><br>
+      <div class="panel-body" align="center">
+        
+        <!--Age group-->
+        <div class="form-group">
+          
+          <div class="col-sm-3 label-control">
+                  <%= label_tag :"Age Group" %>
+          </div>
+          
+          <div class="col-sm-3">
+            <%= select_tag( :age, options_for_select([ "Under 14","Under 16","Under 18","Under 19"]) , {:class => "form-control"}) %>
+          </div>
+
+        </div>
+
+          <br><br><br>
+
+          <!--Event-->
+          <div class="form-group">
+          
+          <div class="col-sm-3 label-control">
+                  <%= label_tag :"Event Name" %>
+          </div>
+          
+          <div class="col-sm-3">
+             <%= collection_select( :race_timing_ind_evnt,:event_id, Event.all, :id, :event_name , { :prompt => "Please Select" },{ :class => "form-control"} ) %> 
+            
+          </div>
+
+        </div>
+
+          <br><br><br>
+          <!--Event Type-->
+          <div class="form-group">
+          
+          <div class="col-sm-3 label-control">
+                  <%= label_tag :"Event Type" %>
+          </div>
+          
+          <div class="col-sm-3">
+            <%= select_tag( :e_type, options_for_select([ "Hit","Trial"]), {:class => "form-control"}) %>
+          </div>
+          
+        </div>
+        <%= submit_tag "submit" %>
+      <% end %>
+
+  </div>
+  <div class="actions">
+    
+  </div>
+
+
