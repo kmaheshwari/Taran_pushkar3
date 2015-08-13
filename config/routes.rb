@@ -11,6 +11,9 @@ TaranPushkar3::Application.routes.draw do
 
   get 'search' => 'race_timing_ind_evnts#search'
   get 'result' => 'race_timing_ind_evnts#result'
+
+  get 'gsearch' => 'race_timing_grp_evnts#gsearch'
+  get 'gresult' => 'race_timing_grp_evnts#gresult'
   resources :race_timing_ind_evnts
 
 

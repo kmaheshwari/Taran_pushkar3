@@ -14,45 +14,7 @@
     </div>
   <% end %>
 
-        <div class="panel-body">
         
-        <!--Age group-->
-        <div class="form-group">
-          
-          <div class="col-sm-1 label-control">
-                  <%= f.label :"Age Group" %>
-          </div>
-          
-          <div class="col-sm-3">
-            <%= f.select( :gage, options_for_select([ "Under 14","Under 16","Under 18","Under 19"]), {} , {:class => "form-control"}) %>
-          </div>
-
-          <!--Event-->
-          <div class="form-group">
-          
-          <div class="col-sm-1 label-control">
-                  <%= f.label :"Event Name" %>
-          </div>
-          
-          <div class="col-sm-3">
-             <%= collection_select( :race_timing_grp_evnt, :group_event_id, Event.all, :id, :event_name , { :prompt => "Please Select" },{ :class => "form-control"}) %>
-            
-          </div>
-          <!--Event Type-->
-          <div class="form-group">
-          
-          <div class="col-sm-1 label-control">
-                  <%= f.label :"Event Type" %>
-          </div>
-          
-          <div class="col-sm-3">
-            <%= f.select( :ge_type, options_for_select([ "Hit","Trial"]), {} , {:class => "form-control"}) %>
-          </div>
-          
-        </div>
-        </div>
-      </div>
-  </div>
       
 
 <br><br>
@@ -73,62 +35,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                          <% @mname.each do |name| %>
                             <tr>
-                                <td>Name1</td>
+                                <td><%= name %></td>
                                 <td><%= f.text_field :gminute, :class => 'form-control' %></td>
                                 <td><%= f.text_field :gsecond, :class => 'form-control' %></td>
                                 <td><%= f.text_field :gmicro_second, :class => 'form-control' %></td>
                                 <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
                             </tr>
-                            <tr>
-                                <td>Name2</td>
-                                <td><%= f.text_field :gminute, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gsecond, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gmicro_second, :class => 'form-control' %></td>
-                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
-                            </tr>
-                            <tr>
-                                <td>Name3</td>
-                                <td><%= f.text_field :gminute, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gsecond, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gmicro_second, :class => 'form-control' %></td>
-                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
-                            </tr>
-                            <tr>
-                                <td>Name4</td>
-                                <td><%= f.text_field :gminute, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gsecond, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gmicro_second, :class => 'form-control' %></td>
-                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
-                            </tr>
-                            <tr>
-                                <td>Name5</td>
-                                <td><%= f.text_field :gminute, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gsecond, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gmicro_second, :class => 'form-control' %></td>
-                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
-                            </tr>
-                            <tr>
-                                <td>Name6</td>
-                                <td><%= f.text_field :gminute, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gsecond, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gmicro_second, :class => 'form-control' %></td>
-                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
-                            </tr>
-                            <tr>
-                                <td>Name7</td>
-                                <td><%= f.text_field :gminute, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gsecond, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gmicro_second, :class => 'form-control'%></td>
-                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
-                            </tr>
-                            <tr>
-                                <td>Name8</td>
-                                <td><%= f.text_field :gminute, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gsecond, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gmicro_second, :class => 'form-control'%></td>
-                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
-                            </tr> 
+                            <% end %>
                         </tbody>
                     </table>
                 

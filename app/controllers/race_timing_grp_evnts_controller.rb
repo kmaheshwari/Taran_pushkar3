@@ -10,6 +10,8 @@ class RaceTimingGrpEvntsController < ApplicationController
     end
   end
 
+
+
   # GET /race_timing_grp_evnts/1
   # GET /race_timing_grp_evnts/1.json
   def show
@@ -81,12 +83,37 @@ class RaceTimingGrpEvntsController < ApplicationController
     end
   end
 
-#temporary variables
 
-  def gage=(input_data)
+
+#to filter data
+  def gsearch
+    
+    @events=Event.all
+    @members=Member.all
   end
-  def gevnt=(input_data)
-  end
-  def ge_type=(input_data)
-  end
+
+def gresult
+    #@event=Event.find_by_event_name(params[:event_id])
+    @mid = MemberGroup.where("group_event_id IN (?)", params[:race_timing_grp_evnt][:group_event_id]).pluck(:member_id)
+    #@mid=MemberEvents.find_by_event_id(params[:event_id]).pluck(:member_id)
+    @mname=Member.where("id IN (?) AND age_group IN (?)",@mid,params[:gage]).pluck(:name)
+    #@meid=MemberEvent.where(@mname.id).pluck(:id)
+    @race_timing_grp_evnt = RaceTimingGrpEvnt.new
+    
+        if @mname.nil?
+      respond_to do |format|
+        format.html { redirect_to "/gsearch", notice: 'No Record Found'}
+      end 
+    else  
+      respond_to do |format|
+        
+        format.html { render action: "new"}
+      end   
+    end 
+        
+      end
+    
+    
+  
+
 end

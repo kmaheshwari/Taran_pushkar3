@@ -10,9 +10,9 @@ class RaceTimingIndEvntsController < ApplicationController
       format.json { render json: @race_timing_ind_evnts }
     end
   end
-  #temporary variables
   
   
+  #to filter data
   def search
     #@race_timing_ind_evnt = RaceTimingIndEvnt.new
     @events=Event.all
