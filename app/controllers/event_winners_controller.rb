@@ -3,7 +3,7 @@ class EventWinnersController < ApplicationController
   # GET /event_winners.json
   def index
     @event_winners = EventWinner.all
-
+    #@ename = Event.where("event_id IN (?)", params[:event_winners][:event_id]).pluck(:event_name)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @event_winners }

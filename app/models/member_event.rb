@@ -5,4 +5,6 @@ class MemberEvent < ActiveRecord::Base
   accepts_nested_attributes_for :event,
     :reject_if => :all_blank
 
+  #checks uniqueness of combination of user_id and member_id
+  validates_uniqueness_of :member_id, :scope => :event_id
 end

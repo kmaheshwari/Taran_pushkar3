@@ -1,9 +1,11 @@
 class Member < ActiveRecord::Base
 	belongs_to :competition_level
-	has_many :member_events
+	has_many :member_events, dependent: :destroy 
 	has_many :events, :through => :member_events
-	has_many :member_groups
+	has_many :member_groups, dependent: :destroy 
 	has_many :group_events, :through => :member_groups
+
+	before_destroy :destroy_member_events
 
 	#for accessing event model attributes through forms
 	accepts_nested_attributes_for :events,

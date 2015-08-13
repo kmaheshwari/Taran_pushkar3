@@ -76,11 +76,14 @@ class MembersController < ApplicationController
     end
   end
 
+  
+
   # DELETE /members/1
   # DELETE /members/1.json
   def destroy
     @member = Member.find(params[:id])
     @member.destroy
+
     
     respond_to do |format|
       format.html { redirect_to members_url }
