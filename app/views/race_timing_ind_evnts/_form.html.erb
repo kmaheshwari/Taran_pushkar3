@@ -20,10 +20,7 @@
 
 <br><br>
 
-<%= @mem.each do |i| %>
-  
 
-      
                 <div class="table-responsive">
                   <div class="col-xs-8 col-xs-offset-2">
                     <table class="table table-bordered table-hover table-striped" align="centre">
@@ -37,66 +34,19 @@
                             </tr>
                         </thead>
                         <tbody>
+            <% @mname.each do |mn| %>
                             <tr>
-                                <td><%=i.name%></td>
+                                <td><%= mn %></td>
                                 <td><%= f.text_field :minute, :class => 'form-control' %></td>
                                 <td><%= f.text_field :second, :class => 'form-control' %></td>
                                 <td><%= f.text_field :micro_second, :class => 'form-control' %></td>
                                 <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
                             </tr>
-                            <tr>
-                                <td>Name2</td>
-                                <td><%= f.text_field :minute, :class => 'form-control' %></td>
-                                <td><%= f.text_field :second, :class => 'form-control' %></td>
-                                <td><%= f.text_field :micro_second, :class => 'form-control' %></td>
-                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
-                            </tr>
-                            <tr>
-                                <td>Name3</td>
-                                <td><%= f.text_field :minute, :class => 'form-control' %></td>
-                                <td><%= f.text_field :second, :class => 'form-control' %></td>
-                                <td><%= f.text_field :micro_second, :class => 'form-control' %></td>
-                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
-                            </tr>
-                            <tr>
-                                <td>Name4</td>
-                                <td><%= f.text_field :minute, :class => 'form-control' %></td>
-                                <td><%= f.text_field :second, :class => 'form-control' %></td>
-                                <td><%= f.text_field :micro_second, :class => 'form-control' %></td>
-                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
-                            </tr>
-                            <tr>
-                                <td>Name5</td>
-                                <td><%= f.text_field :minute, :class => 'form-control' %></td>
-                                <td><%= f.text_field :second, :class => 'form-control' %></td>
-                                <td><%= f.text_field :micro_second, :class => 'form-control' %></td>
-                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
-                            </tr>
-                            <tr>
-                                <td>Name6</td>
-                                <td><%= f.text_field :minute, :class => 'form-control' %></td>
-                                <td><%= f.text_field :second, :class => 'form-control' %></td>
-                                <td><%= f.text_field :micro_second, :class => 'form-control' %></td>
-                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
-                            </tr>
-                            <tr>
-                                <td>Name7</td>
-                                <td><%= f.text_field :minute, :class => 'form-control' %></td>
-                                <td><%= f.text_field :second, :class => 'form-control' %></td>
-                                <td><%= f.text_field :micro_second, :class => 'form-control'%></td>
-                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
-                            </tr>
-                            <tr>
-                                <td>Name8</td>
-                                <td><%= f.text_field :minute, :class => 'form-control' %></td>
-                                <td><%= f.text_field :second, :class => 'form-control' %></td>
-                                <td><%= f.text_field :micro_second, :class => 'form-control'%></td>
-                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
-                            </tr> 
+                <% end %>
                         </tbody>
                     </table>
                 </div>
         </div>
-<%end%>
+
 <%end%>
 

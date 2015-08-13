@@ -9,7 +9,7 @@ TaranPushkar3::Application.routes.draw do
 
   resources :race_timing_grp_evnts
 
-  get 'info' => 'race_timing_ind_evnts#search'
+  get 'search' => 'race_timing_ind_evnts#search'
   get 'result' => 'race_timing_ind_evnts#result'
   resources :race_timing_ind_evnts
 

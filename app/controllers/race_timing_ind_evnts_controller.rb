@@ -99,20 +99,26 @@ class RaceTimingIndEvntsController < ApplicationController
 
 
   def result
-    @event=Event.find_by_event_name(params[:event_id])
-    @mid = MemberEvent.where("event_id IN (?)", @event.id).pluck(:member_id)
+    #@event=Event.find_by_event_name(params[:event_id])
+    @mid = MemberEvent.where("event_id IN (?)", params[:race_timing_ind_evnt][:event_id]).pluck(:member_id)
     #@mid=MemberEvents.find_by_event_id(params[:event_id]).pluck(:member_id)
     @mname=Member.where("id IN (?) AND age_group IN (?)",@mid,params[:age]).pluck(:name)
-    @meid=MemberEvent.find_by_member_id(@mname.id).pluck(:id)
+    #@meid=MemberEvent.where(@mname.id).pluck(:id)
+    @race_timing_ind_evnt = RaceTimingIndEvnt.new
     
-    respond_to do |format|
-        format.html {render "result_path"}
-        format.json { render json: @race_timing_ind_evnt.errors, status: :unprocessable_entity}
-      
-        #format.html { redirect_to info_path }
+        if @mname.nil?
+      respond_to do |format|
+        format.html { redirect_to "/search", notice: 'No Record Found'}
+      end 
+    else  
+      respond_to do |format|
+        #format.html { render "/race_timing_ind_evnts/result", :layout => false}
+        format.html { render action: "new"}
+      end   
+    end 
         
       end
-    end
+    
     
   
 end
