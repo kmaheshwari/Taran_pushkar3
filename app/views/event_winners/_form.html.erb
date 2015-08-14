@@ -1,21 +1,53 @@
-<%= form_for(@event_winner) do |f| %>
-  <% if @event_winner.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event_winner.errors.count, "error") %> prohibited this event_winner from being saved:</h2>
+<center><h1>Event winners</h1></center>
 
-      <ul>
-      <% @event_winner.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_tag(new_event_winner_path, method: 'get') do %>
+  
 
-  <div class="field">
-    <%= f.label :points %><br />
-    <%= f.number_field :points %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+      <div class="panel-body row col-sm-offset-2" >
+
+
+          <!--Event-->
+          <div class="form-group col-md-8">
+            
+              <div class="col-sm-3 label-control">
+                      <%= label_tag :"Event Name" %>
+              </div>
+              
+              <div class="col-sm-5">
+                 <%= collection_select( :event_winner,:event_id, Event.all, :id, :event_name , { :prompt => "Please Select" },{ :class => "form-control"} ) %> 
+                
+              </div>
+
+          </div>
+          
+          
+        </div>
+          <br><br>
+
+
+          <div class="table-responsive">
+                  <div class="col-xs-8 ">
+                    <table class="table table-bordered table-hover table-striped" align="centre">
+                        <thead>
+                            <tr>
+                                <th>Event</th>
+                                <th>First</th>
+                                <th>Second</th>
+                                <th>Third</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+        
+                            <tr>
+                                <td>name</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+        
+                        </tbody>
+                    </table>
+                </div>
 <% end %>
+           
+        </div>
