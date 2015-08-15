@@ -53,7 +53,16 @@ class RaceTimingIndEvntsController < ApplicationController
   # POST /race_timing_ind_evnts.json
   def create
     @race_timing_ind_evnt = RaceTimingIndEvnt.new(params[:race_timing_ind_evnt])
-    
+    # @mid = MemberEvent.where("event_id IN (?)", params[:race_timing_ind_evnt][:event_id]).pluck(:member_id)
+    # @mname=Member.where("id IN (?) AND age_group IN (?)",@mid,params[:age]).pluck(:name)
+    # @mname.each do |m|
+    #   if m.save?
+    #     @mid=Member.where("name=(?)",m).pluck( :id)
+    #     RaceTimingIndEvnt.new(:event_id => params[:race_timing_ind_evnt][:event_id])
+    #     RaceTimingIndEvnt.new(:member_id => @mid)
+    #     RaceTimingIndEvnt.new(:age_group => params[:age])
+    #   end
+    # end
         
       
 
@@ -62,7 +71,7 @@ class RaceTimingIndEvntsController < ApplicationController
         format.html { redirect_to @race_timing_ind_evnt, notice: 'Race timing ind evnt was successfully created.' }
         format.json { render json: @race_timing_ind_evnt, status: :created, location: @race_timing_ind_evnt }
       else
-        format.html { render action: "result" }
+        format.html { render action: "new" }
         format.json { render json: @race_timing_ind_evnt.errors, status: :unprocessable_entity }
       end
     end
@@ -104,6 +113,11 @@ class RaceTimingIndEvntsController < ApplicationController
     #@mid=MemberEvents.find_by_event_id(params[:event_id]).pluck(:member_id)
     @mname=Member.where("id IN (?) AND age_group IN (?)",@mid,params[:age]).pluck(:name)
     #@meid=MemberEvent.where(@mname.id).pluck(:id)
+    @midlst=[]
+    @mname.each do |mn|
+      @fmid=Member.where("name IN (?)",mn).pluck( :id)
+      @midlst.push(@fmid)
+    end
     @race_timing_ind_evnt = RaceTimingIndEvnt.new
     
         if @mname.nil?
@@ -119,6 +133,7 @@ class RaceTimingIndEvntsController < ApplicationController
         
       end
     
+
     
   
 end
