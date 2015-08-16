@@ -1,4 +1,4 @@
 class GrpEventWinner < ActiveRecord::Base
   attr_accessible :gpoints
-  belongs_to :group_event
+  belongs_to :group_event, dependent: :destroy
 end

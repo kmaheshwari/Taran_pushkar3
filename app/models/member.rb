@@ -5,7 +5,6 @@ class Member < ActiveRecord::Base
 	has_many :member_groups, dependent: :destroy 
 	has_many :group_events, :through => :member_groups
 
-	before_destroy :destroy_member_events
 
 	#for accessing event model attributes through forms
 	accepts_nested_attributes_for :events,

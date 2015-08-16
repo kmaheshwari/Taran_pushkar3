@@ -23,8 +23,34 @@ class EventWinnersController < ApplicationController
   # GET /event_winners/new
   # GET /event_winners/new.json
   def new
+    @eid=Event.pluck(:id)
+    # @elist = []
+    # @ename.each do |e|
+    #   @eid =Event.where("event_name in (?)", e).pluck(:id)
+    #   @elist.push(@eid).flatten!
+    # end
+    @age_group = RaceTimingIndEvnt.pluck(:age_group).uniq!
+    @final = []
+    @eid.each do |el|
+      @ename =Event.where("id in (?)", el).pluck(:event_name)
+      @age_group.each do |ag|
+        @r_list =  []
+        @r_list.push(@ename).flatten!
+        @r_list.push(ag)
+        @res_mid = RaceTimingIndEvnt.where("event_id in (?) AND age_group in (?)",el,ag).group("minute,second,micro_second").limit(3).pluck(:member_id)
+        @list = []
+        @res_mid.each do |rm|
+          @result = Member.where("id in (?)", rm).pluck(:name)
+          @list.push(@result).flatten! 
+        end
+        @r_list.push(@list).flatten!
+        @final.push(@r_list)
+      end
+    end
+
     @event_winner = EventWinner.new
-    #@ename = Event.where("id in (?)", params[:event_winner][:event_id]).pluck(event_name)
+    @race_timing_ind_evnt=RaceTimingIndEvnt.all
+    
 
     respond_to do |format|
       format.html # new.html.erb

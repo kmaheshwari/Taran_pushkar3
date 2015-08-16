@@ -115,8 +115,8 @@ class RaceTimingIndEvntsController < ApplicationController
     #@meid=MemberEvent.where(@mname.id).pluck(:id)
     @midlst=[]
     @mname.each do |mn|
-      @fmid=Member.where("name IN (?)",mn).pluck( :id)
-      @midlst.push(@fmid)
+      @fmid=Member.where("name IN (?)", mn).pluck( :id)
+      @midlst.push(@fmid).flatten!.uniq!
     end
     @race_timing_ind_evnt = RaceTimingIndEvnt.new
     

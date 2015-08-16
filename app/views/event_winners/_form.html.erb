@@ -1,6 +1,6 @@
 <center><h1>Event winners</h1></center>
 
-<%= form_tag(new_event_winner_path, method: 'get') do %>
+<%= form_for(@event_winner) do |f| %>
   
 
       <div class="panel-body row col-sm-offset-2" >
@@ -10,7 +10,7 @@
           <div class="form-group col-md-8">
             
               <div class="col-sm-3 label-control">
-                      <%= label_tag :"Event Name" %>
+                      <%= f.label :"Event Name" %>
               </div>
               
               <div class="col-sm-5">
@@ -31,20 +31,24 @@
                         <thead>
                             <tr>
                                 <th>Event</th>
+                                <th>Age Group</th>
                                 <th>First</th>
                                 <th>Second</th>
                                 <th>Third</th>
                             </tr>
                         </thead>
+
                         <tbody>
-        
+    <% @final.each do |l| %> 
                             <tr>
-                                <td>name</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><%= l[0] %></td>
+                                <td><%= l[1] %></td>
+                                <td><%= l[2]%></td>
+                                <td><%= l[3]%></td>
+                                <td><%= l[4]%></td>
                             </tr>
-        
+                            
+        <% end %>
                         </tbody>
                     </table>
                 </div>
