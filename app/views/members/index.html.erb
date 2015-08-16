@@ -24,13 +24,18 @@
                         <th>District</th>
                         <th>State</th>
                         <th>School name or club name</th>
+                        <th>Event name</th>
+                        <th>Group Event name</th>
+
                         
                       </tr>
                     </thead>
 
                     <tbody>
-                      <% @members.each do |member| %>
+                      
+                      <% @members.zip(@list).each do |member,l| %>
                         <tr>
+
                           <td><%= member.comp_name %></td>
                           <td><%= member.name %></td>
                           <td><%= member.dob %></td>
@@ -39,6 +44,8 @@
                           <td><%= member.district %></td>
                           <td><%= member.state %></td>
                           <td><%= member.schl_club_name %></td>
+                          <td><%= l[0] %></td>
+                          <td><%= l[1] %></td>
                           <td><%= link_to 'Show', member %></td>
                           <td><%= link_to 'Edit', edit_member_path(member) %></td>
                           <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>

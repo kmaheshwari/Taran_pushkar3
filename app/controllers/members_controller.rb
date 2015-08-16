@@ -3,6 +3,20 @@ class MembersController < ApplicationController
   # GET /members.json
   def index
     @members = Member.all
+    @list=[]
+    @mid=Member.pluck(:id)
+    @mid.each do |m|
+      @elist=[]
+      @eid = MemberEvent.where("member_id IN (?)",m).pluck(:event_id)
+      @geid = MemberGroup.where("member_id IN (?)",m).pluck(:group_event_id)
+      @ename = Event.where("id IN (?)",@eid).pluck(:event_name)
+      @gename = GroupEvent.where("id IN (?)",@geid).pluck(:grp_event_name)
+      @elist.push(@ename)
+      @elist.push(@gename)
+      @list.push(@elist)
+      
+    end
+    @grp_evnt = GroupEvent.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +28,14 @@ class MembersController < ApplicationController
   # GET /members/1.json
   def show
     @member = Member.find(params[:id])
+    @mid=@member.id
+    @elist=[]
+      @eid = MemberEvent.where("member_id IN (?)",@mid).pluck(:event_id)
+      @geid = MemberGroup.where("member_id IN (?)",@mid).pluck(:group_event_id)
+      @ename = Event.where("id IN (?)",@eid).pluck(:event_name)
+      @gename = GroupEvent.where("id IN (?)",@geid).pluck(:grp_event_name)
+      @elist.push(@ename)
+      @elist.push(@gename)
     
     respond_to do |format|
       format.html # show.html.erb
@@ -36,6 +58,7 @@ class MembersController < ApplicationController
   # GET /members/1/edit
   def edit
     @member = Member.find(params[:id])
+
   end
 
   # POST /members
@@ -43,7 +66,7 @@ class MembersController < ApplicationController
   def create
     @member = Member.new(params[:member])
 	
-    params[:members][:id].each do |e|
+    params[:events][:id].each do |e|
       if !e.empty?
         @member.member_events.build(:event_id => e)
         @member.member_groups.build(:group_event_id => e)

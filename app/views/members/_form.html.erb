@@ -135,7 +135,7 @@
                   <%= f.label "Event" %>
                 </div>
           <div class="col-sm-4">
-              <%=collection_select(:members, :id , Event.all, :id, :event_name, {} ,{ :multiple => 'true', :id => 'events'})%>
+              <%=collection_select(:events, :id , Event.all, :id, :event_name, {} ,{ :multiple => 'true', :id => 'events'})%>
           </div>
         </div>
          
