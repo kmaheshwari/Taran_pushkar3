@@ -1,5 +1,5 @@
 class Member < ActiveRecord::Base
-	belongs_to :competition_level
+	belongs_to :competetion_level
 	has_many :member_events, dependent: :destroy 
 	has_many :events, :through => :member_events
 	has_many :member_groups, dependent: :destroy 
