@@ -3,4 +3,9 @@ class RaceTimingIndEvnt < ActiveRecord::Base
   has_many :events, dependent: :destroy
   
   attr_accessor :age , :e_type
+
+#time feild only contain integers
+  #validates :minute,:second , :micro_second, :numericality => {:only_integer => true}
+  
+
 end

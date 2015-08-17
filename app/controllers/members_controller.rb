@@ -4,6 +4,7 @@ class MembersController < ApplicationController
   def index
     @members = Member.all
     @list=[]
+    #to show event and group event name
     @mid=Member.pluck(:id)
     @mid.each do |m|
       @elist=[]
@@ -29,6 +30,7 @@ class MembersController < ApplicationController
   def show
     @member = Member.find(params[:id])
     @mid=@member.id
+    #to show event and group event name
     @elist=[]
       @eid = MemberEvent.where("member_id IN (?)",@mid).pluck(:event_id)
       @geid = MemberGroup.where("member_id IN (?)",@mid).pluck(:group_event_id)
