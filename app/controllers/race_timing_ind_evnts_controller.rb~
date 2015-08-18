@@ -123,4 +123,3 @@ class RaceTimingIndEvntsController < ApplicationController
     end 
 
  end
-end

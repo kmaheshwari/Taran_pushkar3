@@ -13,7 +13,7 @@ class Member < ActiveRecord::Base
   	accepts_nested_attributes_for :member_events
 
 #field not remain blank
-  validates :name, :gender, :dob, :state , :age_group, :district , :schl_club_name,presence: true
+  validates :name, :gender, :dob, :state , :age_group, :district , presence: true
 #field must contain alphabets
   validates :name, :district , format: { with: /\A[a-zA-Z\s]+\z/,
     message: "only alphabets and spaces are allowed" }
