@@ -21,7 +21,7 @@ TaranPushkar3::Application.routes.draw do
 
 
   resources :events
-
+  resources :competetion_levels
 
   resources :members
   # The priority is based upon order of creation:

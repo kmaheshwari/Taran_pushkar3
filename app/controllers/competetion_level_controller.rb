@@ -1,2 +1,0 @@
-class CompetetionLevelController < ApplicationController
-end

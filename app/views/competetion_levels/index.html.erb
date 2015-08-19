@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Comp name</th>
+    <th>Age Group</th>
     <th></th>
     <th></th>
     <th></th>
@@ -10,7 +10,7 @@
 
 <% @competetion_levels.each do |competetion_level| %>
   <tr>
-    <td><%= competetion_level.comp_name %></td>
+    <td><%= competetion_level.age_group %></td>
     <td><%= link_to 'Show', competetion_level %></td>
     <td><%= link_to 'Edit', edit_competetion_level_path(competetion_level) %></td>
     <td><%= link_to 'Destroy', competetion_level, method: :delete, data: { confirm: 'Are you sure?' } %></td>
