@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150815135702) do
+ActiveRecord::Schema.define(:version => 20150821092931) do
 
   create_table "competetion_levels", :force => true do |t|
     t.string   "age_group"
@@ -83,11 +83,13 @@ ActiveRecord::Schema.define(:version => 20150815135702) do
     t.string   "district"
     t.string   "state"
     t.string   "schl_club_name"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "comp_name"
-    t.string   "age_group"
+    t.integer  "competetion_level_id"
   end
+
+  add_index "members", ["competetion_level_id"], :name => "members_competetion_level_id_fk"
 
   create_table "race_timing_grp_evnts", :force => true do |t|
     t.integer  "gminute"
@@ -131,6 +133,8 @@ ActiveRecord::Schema.define(:version => 20150815135702) do
 
   add_foreign_key "member_groups", "group_events", name: "member_groups_group_event_id_fk"
   add_foreign_key "member_groups", "members", name: "member_groups_member_id_fk"
+
+  add_foreign_key "members", "competetion_levels", name: "members_competetion_level_id_fk"
 
   add_foreign_key "race_timing_grp_evnts", "competetion_levels", name: "race_timing_grp_evnts_competetion_level_id_fk"
   add_foreign_key "race_timing_grp_evnts", "group_events", name: "race_timing_grp_evnts_group_event_id_fk"

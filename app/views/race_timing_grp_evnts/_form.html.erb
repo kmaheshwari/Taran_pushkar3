@@ -29,24 +29,29 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Minutes</th>
-                                <th>Seconds</th>
-                                <th>MicroSeconds</th>
                                 <th>Present</th>
                             </tr>
                         </thead>
+                        
                         <tbody>
                           <% @mname.each do |name| %>
                             <tr>
+                                <%= f.hidden_field :member_id, :value => i%>
+                                <%= f.hidden_field :event_id, :value => params[:race_timing_grp_evnt][:event_id]%>
+                                <%= f.hidden_field :age_group, :value => params[:age]%>
                                 <td><%= name %></td>
-                                <td><%= f.text_field :gminute, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gsecond, :class => 'form-control' %></td>
-                                <td><%= f.text_field :gmicro_second, :class => 'form-control' %></td>
+                                <td><%= f.text_field :gtime, :class => 'form-control' %></td>
+                                
                                 <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
                             </tr>
                             <% end %>
                         </tbody>
                     </table>
-                
+                  <div class="control-group">
+            <!-- Button -->
+            <div class="controls span7 text-center">
+              <button class="btn btn-success">Submit</button>
+            </div>
                 </div>
                 
         </div>
