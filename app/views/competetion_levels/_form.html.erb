@@ -11,11 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :age_group %><br />
-    <%= f.text_field :age_group %>
+  <div class="modal-body ">
+    <div class="well ">
+      
+      <fieldset>
+        <div id="legend">
+          <legend class=""><strong>Age Group Form</strong></legend>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-2 label-control">
+            <%= f.label :"Age Group" %>
+          </div>
+          <div class="col-sm-4">
+            <%= f.text_field :age_group, :placeholder => "Enter Age Group", :class => 'form-control' %>
+          </div>
+        </div>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+ 
+  <br><br>
+
+  <div class="form-group">     
+          <div class="control-group">
+            <!-- Button -->
+            <div class="controls span7 text-center">
+              <button class="btn btn-success">Submit</button>
+              <%= link_to 'Back', events_path ,:class=>"btn btn-success"%>
+            </div>
+          </div>
+        </div>
 <% end %>

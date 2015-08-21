@@ -15,8 +15,9 @@
           </div>
           
           <div class="col-sm-3">
-            <%= select_tag( :gage, options_for_select([ "Under 14","Under 16","Under 18","Under 19"]) , {:class => "form-control"}) %>
+            <%= collection_select( :race_timing_grp_evnt,:gage, CompetetionLevel.all, :id, :age_group , { :prompt => "Please Select" },{ :class => "form-control"} ) %> 
           </div>
+
 
         </div>
 

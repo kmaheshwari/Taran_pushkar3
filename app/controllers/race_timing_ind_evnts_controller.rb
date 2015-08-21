@@ -17,6 +17,7 @@ class RaceTimingIndEvntsController < ApplicationController
     #@race_timing_ind_evnt = RaceTimingIndEvnt.new
     @events=Event.all
     @members=Member.all
+
   end
   # GET /race_timing_ind_evnts/1
   # GET /race_timing_ind_evnts/1.json
@@ -102,8 +103,8 @@ class RaceTimingIndEvntsController < ApplicationController
     #@event=Event.find_by_event_name(params[:event_id])
     @mid = MemberEvent.where("event_id IN (?)", params[:race_timing_ind_evnt][:event_id]).pluck(:member_id)
     #@mid=MemberEvents.find_by_event_id(params[:event_id]).pluck(:member_id)
-    @age_g = CompetitionLevel.where("age_group in (?)", params[:age])
-    @mname=Member.where("id IN (?) AND age_group IN (?)",@mid,@age_g
+    @age_g = CompetetionLevel.where("age_group in (?)", params[:race_timing_ind_evnt][:age]).pluck(:id)
+    @mname=Member.where("id IN (?) AND competetion_level_id IN (?)",@mid,@age_g).pluck(:name)
     #@meid=MemberEvent.where(@mname.id).pluck(:id)
     @midlst=[]
     @mname.each do |mn|

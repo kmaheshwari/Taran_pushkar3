@@ -70,7 +70,7 @@
           </div>
           <!-- <label class="col-md-2 label-control"  for="competition_level">Competition Level</label> -->
           <div class="col-sm-4">
-            <%= collection_select( :member,:competetion_level_id, CompetetionLevel.all, :id, :age_group , { :prompt => "Please Select" },{ :class => "form-control"} ) %> 
+            <%= collection_select( :competetion_level,:id, CompetetionLevel.all, :id, :age_group , { :prompt => "Please Select" },{ :class => "form-control"} ) %> 
           </div>
         </div>
               
@@ -146,7 +146,7 @@
                   <%= f.label "Group Event " %>
                 </div>
               <div class="col-sm-4">
-          <%=collection_select(:members, :id , GroupEvent.all, :id, :grp_event_name, {} ,{ :multiple => 'true', :id => 'group_events'})%>
+          <%=collection_select(:group_events, :id , GroupEvent.all, :id, :grp_event_name, {} ,{ :multiple => 'true', :id => 'group_events'})%>
           </div>
         </div>
 

@@ -11,12 +11,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :grp_event_name %><br />
-    <%= f.text_field :grp_event_name %>
+  <div class="modal-body ">
+    <div class="well ">
+      
+      <fieldset>
+        <div id="legend">
+          <legend class=""><strong>Group Events Form</strong></legend>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-2 label-control">
+            <%= f.label :"Group Event Name" %>
+          </div>
+          <div class="col-sm-4">
+            <%= f.text_field :grp_event_name, :placeholder => "Enter Group Event Name", :class => 'form-control' %>
+          </div>
+        </div>
+    </div>
   </div>
  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <br><br>
+
+  <div class="form-group">     
+          <div class="control-group">
+            <!-- Button -->
+            <div class="controls span7 text-center row">
+              <button class="btn btn-success">Submit</button>
+              <%= link_to 'Back', events_path ,:class=>"btn btn-success"%>
+
+            </div>
+          </div>
+        </div>
 <% end %>

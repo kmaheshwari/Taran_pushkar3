@@ -71,6 +71,11 @@ class MembersController < ApplicationController
     params[:events][:id].each do |e|
       if !e.empty?
         @member.member_events.build(:event_id => e)
+        
+      end
+    end
+    params[:group_events][:id].each do |e|
+      if !e.empty?
         @member.member_groups.build(:group_event_id => e)
       end
     end

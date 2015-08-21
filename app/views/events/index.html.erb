@@ -1,25 +1,11 @@
-<h1>Listing events</h1>
+<center>
+<br>
 
-<table>
-  <tr>
-    <th>Event name</th>
-    
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h3><%= link_to 'New Event', new_event_path %></h3>
+<br>
 
-<% @events.each do |event| %>
-  <tr>
-    <td><%= event.event_name %></td>
-   
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<h3><%= link_to 'New Group Event', new_group_event_path %></h3>
+<br>
 
-<br />
-
-<%= link_to 'New Event', new_event_path %>
+<h3><%= link_to 'New Age group', new_competetion_level_path %></h3>
+</center>
