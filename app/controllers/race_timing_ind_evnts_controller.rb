@@ -103,8 +103,7 @@ class RaceTimingIndEvntsController < ApplicationController
     #@event=Event.find_by_event_name(params[:event_id])
     @mid = MemberEvent.where("event_id IN (?)", params[:race_timing_ind_evnt][:event_id]).pluck(:member_id)
     #@mid=MemberEvents.find_by_event_id(params[:event_id]).pluck(:member_id)
-    @age_g = CompetetionLevel.where("age_group in (?)", params[:race_timing_ind_evnt][:age]).pluck(:id)
-    @mname=Member.where("id IN (?) AND competetion_level_id IN (?)",@mid,@age_g).pluck(:name)
+    @mname=Member.where("id IN (?) AND competetion_level_id IN (?)",@mid,params[:race_timing_ind_evnt][:age]).pluck(:name)
     #@meid=MemberEvent.where(@mname.id).pluck(:id)
     @midlst=[]
     @mname.each do |mn|

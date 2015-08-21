@@ -1,6 +1,6 @@
 <h3 align="center"><strong>Race Timing for Individual Events</strong></h3>
 <!--form-->
-<% @mname.zip(@midlst).each do |mn,i| %>
+
 <%= form_for(@race_timing_ind_evnt) do |f| %>
   <% if @race_timing_ind_evnt.errors.any? %>
     <div id="error_explanation">
@@ -34,6 +34,7 @@
                         </thead>
                         <tbody>
             
+            <% @mname.zip(@midlst).each do |mn,i| %>
                             <tr>
                                 <td><%= mn %></td>
                                 <%= f.hidden_field :member_id, :value => i%>
@@ -43,20 +44,20 @@
                                 <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
                             </tr>
 
-                            <div class="form-group">     
+                            
+                <% end %>
+                        </tbody>
+                    </table>
+                </div>
+
+              <div class="form-group">     
           <div class="control-group">
             <!-- Button -->
             <div class="controls span7 text-center">
               <button class="btn btn-success">Submit</button>
             </div>
           </div>
-        </div>
-                <% end %>
-                        </tbody>
-                    </table>
-                </div>
-
-               
+        </div> 
         </div>
 
 <%end%>

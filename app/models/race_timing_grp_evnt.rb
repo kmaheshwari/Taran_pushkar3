@@ -1,5 +1,6 @@
 class RaceTimingGrpEvnt < ActiveRecord::Base
-  attr_accessible :gmicro_second, :gminute, :gsecond , :gtime, :gage , :gevnt , :ge_type
+  attr_accessible :gmicro_second, :gminute, :gsecond , :gtime, :gage , :gevnt , :ge_type,
+   :member_id, :group_event_id
   has_many :group_events, dependent: :destroy
   attr_reader :gage , :gevnt , :ge_type, :gtime
 

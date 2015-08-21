@@ -96,10 +96,15 @@ class RaceTimingGrpEvntsController < ApplicationController
   def gresult
       #@event=Event.find_by_event_name(params[:event_id])
       @mid = MemberGroup.where("group_event_id IN (?)", params[:race_timing_grp_evnt][:group_event_id]).pluck(:member_id)
-      @age_g = CompetetionLevel.where("age_group in (?)", params[:race_timing_grp_evnt][:gage]).pluck(:id)
+      
       #@mid=MemberEvents.find_by_event_id(params[:event_id]).pluck(:member_id)
-      @mname=Member.where("id IN (?) AND competetion_level_id IN (?)",@mid,@age_g).pluck(:name)
+      @mname=Member.where("id IN (?) AND competetion_level_id IN (?)",@mid,params[:race_timing_grp_evnt][:gage]).pluck(:name)
       #@meid=MemberEvent.where(@mname.id).pluck(:id)
+      @midlst=[]
+    @mname.each do |mn|
+      @fmid=Member.where("name IN (?)", mn).pluck( :id)
+      @midlst.push(@fmid).flatten!.uniq!
+    end
       @race_timing_grp_evnt = RaceTimingGrpEvnt.new
       
           if @mname.nil?
