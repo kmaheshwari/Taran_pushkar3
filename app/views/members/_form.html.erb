@@ -70,7 +70,7 @@
           </div>
           <!-- <label class="col-md-2 label-control"  for="competition_level">Competition Level</label> -->
           <div class="col-sm-4">
-            <%= collection_select( :competetion_level,:id, CompetetionLevel.all, :id, :age_group , { :prompt => "Please Select" },{ :class => "form-control"} ) %> 
+            <%= collection_select( :member, :competetion_level_id, CompetetionLevel.all, :id, :age_group , { :prompt => "Please Select" },{ :class => "form-control"} ) %> 
           </div>
         </div>
               

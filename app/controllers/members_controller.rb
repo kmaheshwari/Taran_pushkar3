@@ -4,6 +4,8 @@ class MembersController < ApplicationController
   def index
     @members = Member.all
     @list=[]
+    #to show age_group
+    
     #to show event and group event name
     @mid=Member.pluck(:id)
     @mid.each do |m|
@@ -12,8 +14,11 @@ class MembersController < ApplicationController
       @geid = MemberGroup.where("member_id IN (?)",m).pluck(:group_event_id)
       @ename = Event.where("id IN (?)",@eid).pluck(:event_name)
       @gename = GroupEvent.where("id IN (?)",@geid).pluck(:grp_event_name)
+      @comp_id=Member.where("id in (?)",@mid).pluck(:competetion_level_id)
+      @age=CompetetionLevel.where("id in (?)",@comp_id).pluck(:age_group)
       @elist.push(@ename)
       @elist.push(@gename)
+      @elist.push(@age)
       @list.push(@elist)
       
     end
@@ -28,6 +33,7 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.json
   def show
+
     @member = Member.find(params[:id])
     @mid=@member.id
     #to show event and group event name
@@ -38,7 +44,8 @@ class MembersController < ApplicationController
       @gename = GroupEvent.where("id IN (?)",@geid).pluck(:grp_event_name)
       @elist.push(@ename)
       @elist.push(@gename)
-    
+    @comp_id=Member.where("id in (?)",@mid).pluck(:competetion_level_id)
+    @age=CompetetionLevel.where("id in (?)",@comp_id).pluck(:age_group)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @member }
@@ -66,19 +73,24 @@ class MembersController < ApplicationController
   # POST /members
   # POST /members.json
   def create
+    #to update all parameters of Member
     @member = Member.new(params[:member])
-	
+    
+    #to do entry in member_event
     params[:events][:id].each do |e|
       if !e.empty?
         @member.member_events.build(:event_id => e)
         
       end
     end
+    #to do entry in member_group
     params[:group_events][:id].each do |e|
       if !e.empty?
         @member.member_groups.build(:group_event_id => e)
       end
     end
+
+
     respond_to do |format|
       if @member.save
         format.html { redirect_to @member, notice: 'Member was successfully created.' }
