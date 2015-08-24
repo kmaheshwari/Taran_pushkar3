@@ -64,8 +64,22 @@
                     </div>
                     <div class="panel-body">
                        
-
-                        <a href="#" class="btn btn-default">Learn More</a>
+                    <% @events.each do |event| %>
+                    <div class="media">
+                        <div class="pull-left">
+                            <span class="fa-stack fa-1x">
+                                  <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                  <i class="fa fa-pencil-square-o fa-stack-1x fa-inverse"></i>
+                            </span> 
+                        </div>
+                        <div class="media-body">
+                        <p><%= event.event_name %></p>
+                    </div>
+                </div>
+                    <%end%>
+                    <div class="panel-heading text-center">
+                        <a href="#" class="btn btn-default">View all</a>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -75,8 +89,22 @@
                         <h4><i class="fa fa-fw fa-gift"></i> Free &amp; Open Source</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
+                       <% @gevents.each do |event| %>
+                    <div class="media">
+                        <div class="pull-left">
+                            <span class="fa-stack fa-1x">
+                                  <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                  <i class="fa fa-pencil-square-o fa-stack-1x fa-inverse"></i>
+                            </span> 
+                        </div>
+                        <div class="media-body">
+                        <p><%= event.grp_event_name %></p>
+                    </div>
+                </div>
+                    <%end%>
+                    <div class="panel-heading text-center">
+                        <a href="#" class="btn btn-default">View all</a>
+                    </div>
                     </div>
                 </div>
             </div>
