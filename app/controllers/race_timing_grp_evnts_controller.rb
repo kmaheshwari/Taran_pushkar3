@@ -42,7 +42,13 @@ class RaceTimingGrpEvntsController < ApplicationController
   # POST /race_timing_grp_evnts
   # POST /race_timing_grp_evnts.json
   def create
-    @race_timing_grp_evnt = RaceTimingGrpEvnt.new(params[:race_timing_grp_evnt])
+    #for multiple entries
+    params[:member_id].zip(params[:mem]).each do |mid,tm|
+        @race_timing_grp_evnt = RaceTimingGrpEvnt.new(params[:race_timing_grp_evnt])
+        @race_timing_grp_evnt.member_id = mid.to_i
+        @race_timing_grp_evnt.gtime = tm
+        @race_timing_grp_evnt.save
+    end
 
     respond_to do |format|
       if @race_timing_grp_evnt.save
@@ -98,12 +104,12 @@ class RaceTimingGrpEvntsController < ApplicationController
       @mid = MemberGroup.where("group_event_id IN (?)", params[:race_timing_grp_evnt][:group_event_id]).pluck(:member_id)
       
       #@mid=MemberEvents.find_by_event_id(params[:event_id]).pluck(:member_id)
-      @mname=Member.where("id IN (?) AND competetion_level_id IN (?)",@mid,params[:race_timing_grp_evnt][:gage]).pluck(:name)
+      @midlst=Member.where("id IN (?) AND competetion_level_id IN (?)",@mid,params[:race_timing_grp_evnt][:gage]).pluck(:id)
       #@meid=MemberEvent.where(@mname.id).pluck(:id)
-      @midlst=[]
-    @mname.each do |mn|
-      @fmid=Member.where("name IN (?)", mn).pluck( :id)
-      @midlst.push(@fmid).flatten!.uniq!
+      @mname=[]
+    @midlst.each do |mn|
+      @fmid=Member.where("id IN (?)", mn).pluck( :name)
+      @mname.push(@fmid).flatten!
     end
       @race_timing_grp_evnt = RaceTimingGrpEvnt.new
       

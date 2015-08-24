@@ -14,9 +14,6 @@
     </div>
   <% end %>
 
-   
-      
-      
 
 <br><br>
 
@@ -33,31 +30,31 @@
                             </tr>
                         </thead>
                         <tbody>
-            
-            <% @mname.zip(@midlst).each do |mn,i| %>
+           <% @mname.zip(@midlst).each do |mn,i| %> 
+
                             <tr>
                                 <td><%= mn %></td>
-                                <%= f.hidden_field :member_id, :value => i%>
+                                <%= hidden_field_tag "member_id[]",i%>
                                 <%= f.hidden_field :event_id, :value => params[:race_timing_ind_evnt][:event_id]%>
-                                <%= f.hidden_field :age_group, :value => params[:age]%>
-                                <td><%= f.text_field :time, :class => 'form-control' %></td>
+                                <%= f.hidden_field :age_group, :value => params[:race_timing_ind_evnt][:age]%>
+                                <td><%=text_field_tag "mem[]"%></td>
                                 <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
                             </tr>
-
-                            
-                <% end %>
-                        </tbody>
-                    </table>
-                </div>
-
-              <div class="form-group">     
+                            <% end %>
+                            <div class="form-group">     
           <div class="control-group">
             <!-- Button -->
             <div class="controls span7 text-center">
               <button class="btn btn-success">Submit</button>
             </div>
           </div>
-        </div> 
+        </div>
+                
+                        </tbody>
+                    </table>
+                </div>
+
+               
         </div>
 
 <%end%>

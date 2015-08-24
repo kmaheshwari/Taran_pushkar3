@@ -37,10 +37,10 @@
                           <% @mname.zip(@midlst).each do |mn,i| %>
                             <tr>
                                 <td><%= mn %></td>
-                                <%= f.hidden_field :member_id, :value => i%>
+                                <%= hidden_field_tag "member_id[]", i%>
                                 <%= f.hidden_field :group_event_id, :value => params[:race_timing_grp_evnt][:group_event_id]%>
-                                
-                                <td><%= f.text_field :gtime, :class => 'form-control' %></td>
+                                <%= f.hidden_field :competetion_level_id, :value => params[:race_timing_grp_evnt][:gage]%>
+                                <td><%= text_field_tag "mem[]" %></td>
                                 <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
                             </tr>
                             <% end %>
