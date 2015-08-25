@@ -30,19 +30,28 @@
                         <thead>
                             <tr>
                                 <th>Group Event</th>
+                                <th>Age Group</th>
                                 <th>First</th>
                                 <th>Second</th>
                                 <th>Third</th>
+                                <th>Fourth</th>
+                                <th>Fifth</th>
                             </tr>
                         </thead>
                         <tbody>
-            
-                            <tr>
-                                <td>Event1</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            
+                            <% @final.each do |l| %> 
+                              <tr>
+                                  <td><b><%= l[0] %></b></td>
+                                  <td><%= l[1] %></td>
+                                  <td><%= l[2]%></td>
+                                  <td><%= l[3]%></td>
+                                  <td><%= l[4]%></td>
+                                  <td><%= l[5]%></td>
+                                  <td><%= l[6]%></td>
+                              </tr>
+                            
+                            <% end %>
                 
                         </tbody>
                     </table>

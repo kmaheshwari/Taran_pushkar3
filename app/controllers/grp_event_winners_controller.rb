@@ -24,6 +24,29 @@ class GrpEventWinnersController < ApplicationController
   # GET /grp_event_winners/new
   # GET /grp_event_winners/new.json
   def new
+    #for finding winners
+    @eid=GroupEvent.pluck(:id)
+    
+    @age_id = RaceTimingGrpEvnt.pluck(:competetion_level_id).uniq!
+
+    @final = []
+    @eid.each do |el|
+      @ename =GroupEvent.where("id in (?)", el).pluck(:grp_event_name)
+      @age_id.each do |ag|
+        @r_list =  []
+        @r_list.push(@ename).flatten!
+        @age_group=CompetetionLevel.where("id in (?)",@age_id).pluck(:age_group)
+        @r_list.push(@age_group)
+        @res_mid = RaceTimingGrpEvnt.where("group_event_id in (?) AND competetion_level_id in (?)",el,ag).group("gminute,gsecond,gmicro_second").limit(5).pluck(:member_id)
+        @list = []
+        @res_mid.each do |rm|
+          @result = Member.where("id in (?)", rm).pluck(:name)
+          @list.push(@result).flatten! 
+        end
+        @r_list.push(@list).flatten!
+        @final.push(@r_list)
+      end
+    end
     @grp_event_winner = GrpEventWinner.new
 
     respond_to do |format|
@@ -80,4 +103,7 @@ class GrpEventWinnersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  
+
 end

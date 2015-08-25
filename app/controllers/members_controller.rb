@@ -1,6 +1,10 @@
 class MembersController < ApplicationController
   # GET /members
   # GET /members.json
+  def welcome
+    @events=Event.all
+  end
+  
   def index
     @members = Member.all
     @list=[]
@@ -14,14 +18,13 @@ class MembersController < ApplicationController
       @geid = MemberGroup.where("member_id IN (?)",m).pluck(:group_event_id)
       @ename = Event.where("id IN (?)",@eid).pluck(:event_name)
       @gename = GroupEvent.where("id IN (?)",@geid).pluck(:grp_event_name)
-      @comp_id=Member.where("id in (?)",m).pluck(:competetion_level_id)
-    @age=CompetetionLevel.where("id in (?)",@comp_id).pluck(:age_group)
-    
+      @comp_id=Member.where("id in (?)",@mid).pluck(:competetion_level_id)
+      @age=CompetetionLevel.where("id in (?)",@comp_id).pluck(:age_group)
       @elist.push(@ename)
       @elist.push(@gename)
       @elist.push(@age)
       @list.push(@elist)
-    
+      
     end
     @grp_evnt = GroupEvent.all
 
