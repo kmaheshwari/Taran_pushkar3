@@ -117,6 +117,8 @@ class RaceTimingIndEvntsController < ApplicationController
       @mname.push(@fmn).flatten!
     end
     @race_timing_ind_evnt = RaceTimingIndEvnt.new
+    @pagin = Kaminari.paginate_array(@mname).page(params[:page]).per(8)
+
     
         if @mname.nil?
       respond_to do |format|

@@ -30,7 +30,7 @@
                             </tr>
                         </thead>
                         <tbody>
-           <% @mname.zip(@midlst).each do |mn,i| %> 
+           <% @pagin.zip(@midlst).each do |mn,i| %> 
 
                             <tr>
                                 <td><%= mn %></td>
@@ -41,21 +41,19 @@
                                 <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
                             </tr>
                             <% end %>
-                            <div class="form-group">     
-          <div class="control-group">
-            <!-- Button -->
-            <div class="controls span7 text-center">
-              <button class="btn btn-success">Submit</button>
-            </div>
-          </div>
-        </div>
-                
+
+
+            <%= paginate @pagin %>
+
+
+                           
                         </tbody>
                     </table>
                 </div>
-
                
         </div>
+         
+                
 
 <%end%>
 

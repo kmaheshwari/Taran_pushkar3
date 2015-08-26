@@ -9,6 +9,7 @@ class EventWinnersController < ApplicationController
     end
   end
 
+  
   # GET /event_winners/1
   # GET /event_winners/1.json
   def show
@@ -19,6 +20,7 @@ class EventWinnersController < ApplicationController
       format.json { render json: @event_winner }
     end
   end
+
 
   # GET /event_winners/new
   # GET /event_winners/new.json
@@ -34,7 +36,7 @@ class EventWinnersController < ApplicationController
       @age_id.each do |ag|
         @r_list =  []
         @r_list.push(@ename).flatten!
-        @age_group=CompetetionLevel.where("id in (?)",@age_id).pluck(:age_group)
+        @age_group=CompetetionLevel.where("id in (?)",ag).pluck(:age_group)
         @r_list.push(@age_group)
         @res_mid = RaceTimingIndEvnt.where("event_id in (?) AND age_group in (?)",el,ag).group("minute,second,micro_second").limit(5).pluck(:member_id)
         @list = []
@@ -45,11 +47,10 @@ class EventWinnersController < ApplicationController
         @r_list.push(@list).flatten!
         @final.push(@r_list)
       end
-    end
-
+      end
+  
     @event_winner = EventWinner.new
     @race_timing_ind_evnt=RaceTimingIndEvnt.all
-    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -57,12 +58,31 @@ class EventWinnersController < ApplicationController
     end
   end
 
+
+  #to add points for each winner
+  def winner=(value)    
+    @top_3 = value[0 .. 2]
+    @top_3.zip([5,3,2]).each do |i,p|
+      if i.exists?
+        @event_win = EventWinner.where("member_id in (?)",i).pluck(:id)
+        @pi = EventWinner.where("member_id in (?)",i).pluck(:points)
+        @event_win.points = @pi + p
+        @event_win.save
+      else
+        @event_winner = EventWinner.new(:)
+        @event_winner.member_id = i
+        @event_winner.points=p
+        @event_winner.save
+      end
+
+    end
+  end
   # GET /event_winners/1/edit
   def edit
     @event_winner = EventWinner.find(params[:id])
   end
 
-  # POST /event_winners
+  # POST /event_winners - 
   # POST /event_winners.json
   def create
     @event_winner = EventWinner.new(params[:event_winner])

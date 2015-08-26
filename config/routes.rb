@@ -1,6 +1,6 @@
 TaranPushkar3::Application.routes.draw do
 
- root :to => 'welcome#index'
+  root :to => 'welcome#index'
   resources :grp_event_winners
 
 
@@ -15,7 +15,7 @@ TaranPushkar3::Application.routes.draw do
   get 'gsearch' => 'race_timing_grp_evnts#gsearch'
   get 'gresult' => 'race_timing_grp_evnts#gresult'
   resources :race_timing_ind_evnts
-
+  get 'winner' => 'event_winners#winner'
 
   resources :group_events
 
