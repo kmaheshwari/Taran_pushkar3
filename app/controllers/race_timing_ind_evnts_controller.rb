@@ -59,11 +59,14 @@ class RaceTimingIndEvntsController < ApplicationController
         @race_timing_ind_evnt = RaceTimingIndEvnt.new(params[:race_timing_ind_evnt])
         @race_timing_ind_evnt.member_id = mid.to_i
         @race_timing_ind_evnt.time = tm
-        @race_timing_ind_evnt.save
+        @race_timing_ind_evnt.save  
     end
-        
-      
 
+    if params[:event_type] == 'Hit'
+        
+        hit_round
+
+      end
     respond_to do |format|
       if @race_timing_ind_evnt.save
         format.html { redirect_to @race_timing_ind_evnt, notice: 'Race timing ind evnt was successfully created.' }
@@ -103,7 +106,10 @@ class RaceTimingIndEvntsController < ApplicationController
     end
   end
 
-
+  def hit_round
+    @hmem = RaceTimingIndEvnt.group("minute,second,micro_second").limit(8).pluck(:member_id)
+    @mname = Member.where("id in (?)", @hmem)
+  end
 
   def result
     #@event=Event.find_by_event_name(params[:event_id])

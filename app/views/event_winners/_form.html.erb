@@ -3,25 +3,7 @@
 <%= form_for(@event_winner) do |f| %>
   
 
-      <div class="panel-body row col-sm-offset-2" >
-
-
-          <!--Event-->
-          <div class="form-group col-md-8">
-            
-              <div class="col-sm-3 label-control">
-                      <%= f.label :"Event Name" %>
-              </div>
-              
-              <div class="col-sm-5">
-                 <%= collection_select( :event_winner,:event_id, Event.all, :id, :event_name , { :prompt => "Please Select" },{ :class => "form-control"} ) %> 
-                
-              </div>
-
-          </div>
-          
-          
-        </div>
+      
           <br><br>
 
 
