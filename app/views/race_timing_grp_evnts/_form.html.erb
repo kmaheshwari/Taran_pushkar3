@@ -34,7 +34,7 @@
                         </thead>
                         
                         <tbody>
-                          <% @mname.zip(@midlst).each do |mn,i| %>
+                          <% @pagin.zip(@midlst).each do |mn,i| %>
                             <tr>
                                 <td><%= mn %></td>
                                 <%= hidden_field_tag "member_id[]", i%>
@@ -44,6 +44,7 @@
                                 <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
                             </tr>
                             <% end %>
+                          <%= paginate @pagin %>
                         </tbody>
                     </table>
                   <div class="control-group">

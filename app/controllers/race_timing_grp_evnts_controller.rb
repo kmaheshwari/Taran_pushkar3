@@ -112,7 +112,7 @@ class RaceTimingGrpEvntsController < ApplicationController
       @mname.push(@fmid).flatten!
     end
       @race_timing_grp_evnt = RaceTimingGrpEvnt.new
-      
+      @pagin = Kaminari.paginate_array(@mname).page(params[:page]).per(8)
           if @mname.nil?
         respond_to do |format|
           format.html { redirect_to "/gsearch", notice: 'No Record Found'}

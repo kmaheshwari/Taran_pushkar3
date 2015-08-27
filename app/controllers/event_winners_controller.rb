@@ -60,22 +60,48 @@ class EventWinnersController < ApplicationController
 
 
   #to add points for each winner
-  def winner=(value)    
-    @top_3 = value[0 .. 2]
-    @top_3.zip([5,3,2]).each do |i,p|
-      if i.exists?
-        @event_win = EventWinner.where("member_id in (?)",i).pluck(:id)
-        @pi = EventWinner.where("member_id in (?)",i).pluck(:points)
-        @event_win.points = @pi + p
-        @event_win.save
-      else
-        @event_winner = EventWinner.new(:)
-        @event_winner.member_id = i
-        @event_winner.points=p
-        @event_winner.save
-      end
+  def winner
 
+    @eid=RaceTimingIndEvnt.pluck(:event_id).uniq!
+    @age=RaceTimingIndEvnt.pluck(:age_group).uniq!
+    @age.each do |a|
+      @eid.each do |e|  
+           
+        @mem=RaceTimingIndEvnt.where("event_id in (?) and age_group in (?)",e,a).group("minute,second,micro_second").limit(3).pluck(:member_id)
+        @i=1
+        @mem.each do |m|
+          @pi=0
+          if @i==1
+            p=5
+          elsif @i==2
+            p=3
+          else
+            p=2
+          end
+          
+          @wid=EventWinner.where("member_id in (?)",m).pluck(:id)
+          @event_winn = EventWinner.find(@wid) 
+          if EventWinner.where("member_id in (?)",m).exists?
+            @pi = EventWinner.where("member_id in (?)",m).pluck(:points).flatten!.to_i
+            
+            EventWinner.update_counters(@wid, :points => p+@pi)
+            @i=@i+1
+            
+            
+           else
+            @event_winner = EventWinner.new(params[:event_winner])
+            
+            @event_winner.member_id = m
+            @event_winner.points = p
+            @event_winner.save
+            @i=@i+1
+            
+          end
+
+        end
+      end
     end
+    @e=EventWinner.all
   end
   # GET /event_winners/1/edit
   def edit

@@ -1,6 +1,6 @@
 class EventWinner < ActiveRecord::Base
-  attr_accessible :points
-  belongs_to :event
+  attr_accessible :member_id,:points
+  
 
   attr_accessor :event_id
 
