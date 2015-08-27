@@ -28,6 +28,8 @@ gem 'bootstrap-datepicker-rails'
 gem "font-awesome-rails"
 gem 'kaminari'
 gem 'bootstrap-editable-rails'
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

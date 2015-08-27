@@ -34,4 +34,7 @@
   #pdf_link {
     display: none;
   }
+  .export {
+  display: hidden;
+ }
 }

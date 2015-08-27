@@ -58,6 +58,18 @@ class EventWinnersController < ApplicationController
     end
   end
 
+  def download_pdf
+      new
+      pdf = render_to_string(pdf: "event_winner.pdf",template: "event_winners/_form.html.erb", encoding: "UTF-8", layout: 'winner')
+
+      send_data pdf ,:disposition => 'inline', filename: 'winner.pdf', :type => 'application/pdf'
+      save_path = Rails.root.join('pdfs','winner.pdf')
+        File.open(save_path, 'wb') do |file|
+          file << pdf
+        end
+
+    end
+
 
   #to add points for each winner
   def winner

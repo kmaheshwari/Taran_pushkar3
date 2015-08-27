@@ -1,0 +1,24 @@
+<h1>Timings of race</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Minute</th>
+    <th>Seconds</th>
+    <th>Micro-seconds</th>
+  </tr>
+
+<% @race_timing_ind_evnt.zip(@mname).each do |rtie,mn| %>
+  <tr>
+    <td><%= mn %></td>
+    <td><%= rtie.minute %></td>
+    <td><%= rtie.second %></td>
+    <td><%= rtie.micro_second %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+

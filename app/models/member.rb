@@ -1,3 +1,14 @@
+# class DistrcitValidator < ActiveModel::Validator
+#   def validate(record)
+#     if options[:fields].any?{|field| record.send(field) == "Evil" }
+#       record.errors[:base] << "Already 2 students from your district"
+#     end
+#   end
+# end
+ 
+# class Person < ActiveRecord::Base
+#   validates_with GoodnessValidator, fields: [:district]
+# end
 class Member < ActiveRecord::Base
 	belongs_to :competetion_level
 	has_many :member_events, dependent: :destroy 

@@ -35,7 +35,7 @@ class GrpEventWinnersController < ApplicationController
       @age_id.each do |ag|
         @r_list =  []
         @r_list.push(@ename).flatten!
-        @age_group=CompetetionLevel.where("id in (?)",@age_id).pluck(:age_group)
+        @age_group=CompetetionLevel.where("id in (?)",ag).pluck(:age_group)
         @r_list.push(@age_group)
         @res_mid = RaceTimingGrpEvnt.where("group_event_id in (?) AND competetion_level_id in (?)",el,ag).group("gminute,gsecond,gmicro_second").limit(5).pluck(:member_id)
         @list = []
@@ -55,6 +55,17 @@ class GrpEventWinnersController < ApplicationController
     end
   end
 
+  def gdownload_pdf
+      new
+      pdf = render_to_string(pdf: "grp_event_winner.pdf",template: "grp_event_winners/_form.html.erb", encoding: "UTF-8", layout: 'winner')
+
+      send_data pdf ,:disposition => 'inline', filename: 'group_winner.pdf', :type => 'application/pdf'
+      save_path = Rails.root.join('pdfs','group_winner.pdf')
+        File.open(save_path, 'wb') do |file|
+          file << pdf
+        end
+
+    end
   # GET /grp_event_winners/1/edit
   def edit
     @grp_event_winner = GrpEventWinner.find(params[:id])

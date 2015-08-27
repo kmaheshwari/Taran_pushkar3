@@ -138,4 +138,9 @@ class RaceTimingIndEvntsController < ApplicationController
     end 
 
  end
+ def show_timings
+  @race_timing_ind_evnt = RaceTimingIndEvnt.where("age_group in (?) AND event_id in (?)",params[:race_timing_ind_evnt][:age],params[:race_timing_ind_evnt][:event_id])
+  @mname = Member.where("id in (?)",@race_timing_ind_evnt.member_id).pluck(:name)
+
+ end
 end

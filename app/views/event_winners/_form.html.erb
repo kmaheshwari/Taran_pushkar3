@@ -1,14 +1,12 @@
 <center><h1>Event winners</h1></center>
 
+<div id = "page-wrapper" >
+
 <%= form_for(@event_winner) do |f| %>
-  
-
       
-          <br><br>
-
-
+ 
           <div class="table-responsive">
-                  <div class="col-xs-8 ">
+                 <div class = " centered ">
                     <table class="table table-bordered table-hover table-striped" align="centre">
                         <thead>
                             <tr>
@@ -37,7 +35,12 @@
         <% end %>
                         </tbody>
                     </table>
-                </div>
+                
 <% end %>
-           
+</div>
+</div>
+     <div class = "row">  
+    <center><h4><%= link_to "Download Pdf",download_pdf_path(:format => "pdf"),:target => "_blank", :id => "pdf_link" %></h4></center>
+    
         </div>
+</div>

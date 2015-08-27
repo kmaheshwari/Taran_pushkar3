@@ -11,11 +11,15 @@ TaranPushkar3::Application.routes.draw do
 
   get 'search' => 'race_timing_ind_evnts#search'
   get 'result' => 'race_timing_ind_evnts#result'
+  get 'show_timings' => 'race_timing_ind_evnts#show_timings'
 
   get 'gsearch' => 'race_timing_grp_evnts#gsearch'
   get 'gresult' => 'race_timing_grp_evnts#gresult'
   resources :race_timing_ind_evnts
   get 'winner' => 'event_winners#winner'
+
+  get 'download_pdf' => 'event_winners#download_pdf'
+  get 'gdownload_pdf' => 'grp_event_winners#gdownload_pdf'
 
   resources :group_events
 
