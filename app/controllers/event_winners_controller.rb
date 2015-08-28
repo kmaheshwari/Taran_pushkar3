@@ -76,6 +76,8 @@ class EventWinnersController < ApplicationController
 
     @eid=RaceTimingIndEvnt.pluck(:event_id).uniq!
     @age=RaceTimingIndEvnt.pluck(:age_group).uniq!
+    @age_g = CompetetionLevel.where("id in (?)",@age).pluck(:age_group)
+    @all_names = []
     @age.each do |a|
       @eid.each do |e|  
            
@@ -102,7 +104,6 @@ class EventWinnersController < ApplicationController
             
            else
             @event_winner = EventWinner.new(params[:event_winner])
-            
             @event_winner.member_id = m
             @event_winner.points = p
             @event_winner.save
@@ -112,8 +113,13 @@ class EventWinnersController < ApplicationController
 
         end
       end
+       @mem=RaceTimingIndEvnt.where("age_group in (?)",a).group("minute,second,micro_second").limit(3).pluck(:member_id)
+       @ewid = EventWinner.where("member_id in (?)",@mem).group("points").limit(1).pluck(:member_id)
+       @ewname = Member.where("id in (?)",@ewid).pluck(:name)
+       @all_names.push(@ewname).flatten!
     end
     @e=EventWinner.all
+
   end
   # GET /event_winners/1/edit
   def edit

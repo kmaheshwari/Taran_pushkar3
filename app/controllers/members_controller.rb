@@ -11,7 +11,7 @@ class MembersController < ApplicationController
     #to show age_group
     
     #to show event and group event name
-    @mid=Member.pluck(:id)
+    @mid=Member.pluck(:id).sort!
     @mid.each do |m|
       @elist=[]
       @eid = MemberEvent.where("member_id IN (?)",m).pluck(:event_id)

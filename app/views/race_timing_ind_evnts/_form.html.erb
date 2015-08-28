@@ -32,7 +32,7 @@
                             </tr>
                         </thead>
                         <tbody>
-           <% @pagin.zip(@midlst).each do |mn,i| %> 
+           <% @mname.zip(@midlst).each do |mn,i| %> 
 
                             <tr>
                                 <td><%= mn %></td>
@@ -44,21 +44,21 @@
                             </tr>
                             <% end %>
 
-
-            <%= paginate @pagin %>
-
-
                            
                         </tbody>
                     </table>
                 </div>
                
         </div>
-        <div class="control-group">
+        
+        
+        <div class="control-group col-md-offset-4">
             <!-- Button -->
             <div class="controls span7 text-center">
               <button class="btn btn-success">Submit</button>
+
             </div>
+            
                 </div>
          
                 

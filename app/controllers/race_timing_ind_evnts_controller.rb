@@ -17,6 +17,7 @@ class RaceTimingIndEvntsController < ApplicationController
     #@race_timing_ind_evnt = RaceTimingIndEvnt.new
     @events=Event.all
     @members=Member.all
+    
 
   end
   # GET /race_timing_ind_evnts/1
@@ -25,7 +26,7 @@ class RaceTimingIndEvntsController < ApplicationController
     @race_timing_ind_evnt = RaceTimingIndEvnt.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html{redirect_to search_path}
       format.json { render json: @race_timing_ind_evnt }
     end
   end
@@ -62,12 +63,9 @@ class RaceTimingIndEvntsController < ApplicationController
         @race_timing_ind_evnt.save  
     end
 
-    if params[:event_type] == 'Hit'
-        
-        hit_round
-
-      end
+    
     respond_to do |format|
+      
       if @race_timing_ind_evnt.save
         format.html { redirect_to @race_timing_ind_evnt, notice: 'Race timing ind evnt was successfully created.' }
         format.json { render json: @race_timing_ind_evnt, status: :created, location: @race_timing_ind_evnt }
@@ -107,8 +105,9 @@ class RaceTimingIndEvntsController < ApplicationController
   end
 
   def hit_round
-    @hmem = RaceTimingIndEvnt.group("minute,second,micro_second").limit(8).pluck(:member_id)
-    @mname = Member.where("id in (?)", @hmem)
+    @race_timing_ind_evnt = RaceTimingIndEvnt.new
+    @hmid = RaceTimingIndEvnt.group("minute,second,micro_second").limit(8).pluck(:member_id)
+    @mname = Member.where("id in (?)", @hmid).pluck(:name)
   end
 
   def result

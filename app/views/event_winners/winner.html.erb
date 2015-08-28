@@ -1,1 +1,34 @@
-<%=@event_winn%>
+
+<center><h1>Overall Event winners</h1></center>
+
+<div id = "page-wrapper" >
+
+      
+ 
+          <div class="table-responsive">
+                 <div class = " centered ">
+                    <table class="table table-bordered table-hover table-striped" align="centre">
+                        <thead>
+                            <tr>
+                                <th>Age Group</th>
+                                <th>Overall Winner</th>
+                                
+                            </tr>
+                        </thead>
+
+                        <tbody>
+    <% @age_g.zip(@all_names).each do |ag,an| %> 
+                            <tr>
+                                <td><b><%= ag %><b></td>
+                                <td><%= an %></td>
+                            </tr>
+                            
+        <% end %>
+                        </tbody>
+                    </table>
+                
+
+</div>
+</div>
+     
+</div>

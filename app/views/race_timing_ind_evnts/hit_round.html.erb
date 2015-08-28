@@ -1,0 +1,64 @@
+<h3 align="center"><strong>Race Timing for Individual Events</strong></h3>
+<!--form-->
+
+<%= form_for(@race_timing_ind_evnt) do |f| %>
+  <% if @race_timing_ind_evnt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@race_timing_ind_evnt.errors.count, "error") %> prohibited this race_timing_ind_evnt from being saved:</h2>
+
+      <ul>
+      <% @race_timing_ind_evnt.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<br><br>
+
+<div class="col-xs-offset-7"><h4>Number of Students: <%= @mname.length%></h4></div>
+<br>
+<%= @hmid%>
+
+                <div class="table-responsive">
+                  <div class="col-xs-8 col-xs-offset-2">
+                    <table class="table table-bordered table-hover table-striped" align="centre">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Timing</th>
+                                <th>Present</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+           <% @mname.each do |mn| %> 
+
+                            <tr>
+                                <td><%= mn %></td>
+                                
+                                <td><%=text_field_tag "mem[]"%></td>
+                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
+                            </tr>
+                            <% end %>
+
+                           
+                        </tbody>
+                    </table>
+                </div>
+               
+        </div>
+        
+        
+        <div class="control-group col-md-offset-4">
+            <!-- Button -->
+            <div class="controls span7 text-center">
+              <button class="btn btn-success">Submit</button>
+            </div>
+                </div>
+         
+                
+
+<%end%>
+
+
