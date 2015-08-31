@@ -38,19 +38,10 @@
         </div>
 
           <br><br><br>
-          <!--Event Type-->
-          <div class="form-group">
           
-          <div class="col-sm-3 label-control">
-                  <%= label_tag :"Event Type" %>
-          </div>
-          
-          <div class="col-sm-3">
-            <%= select_tag( :ge_type, options_for_select([ "Hit","Trial"]), {:class => "form-control"}) %>
-          </div>
           
         </div>
-        <%= submit_tag "Search", :class => 'btn btn-primary' %>
+        <center><%= submit_tag "Search", :class => 'btn btn-primary' %></center>
       <% end %>
 
   </div>

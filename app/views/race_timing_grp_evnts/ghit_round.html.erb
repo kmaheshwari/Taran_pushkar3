@@ -1,13 +1,13 @@
-<h3 align="center"><strong>Race Timing for Hit round Individual Events</strong></h3>
+<h3 align="center"><strong>Race Timing for Hit Round Group Events</strong></h3>
 <!--form-->
 
-<%= form_for(@race_timing_ind_evnt) do |f| %>
-  <% if @race_timing_ind_evnt.errors.any? %>
+<%= form_for(@race_timing_grp_evnt) do |f| %>
+  <% if @race_timing_grp_evnt.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@race_timing_ind_evnt.errors.count, "error") %> prohibited this race_timing_ind_evnt from being saved:</h2>
+      <h2><%= pluralize(@race_timing_grp_evnt.errors.count, "error") %> prohibited this race_timing_grp_evnt from being saved:</h2>
 
       <ul>
-      <% @race_timing_ind_evnt.errors.full_messages.each do |msg| %>
+      <% @race_timing_grp_evnt.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -31,13 +31,13 @@
                             </tr>
                         </thead>
                         <tbody>
-           <% @mname.zip(@hmid).each do |mn,i| %> 
+           <% @final_names.zip(@hmid).each do |mn,i| %> 
 
                             <tr>
                                 <td><%= mn %></td>
                                 <%= hidden_field_tag "member_id[]",i%>
-                                <%= f.hidden_field :event_id, :value => params[:event_id]%>
-                                <%= f.hidden_field :age_group, :value => params[:age]%>
+                                <%= f.hidden_field :group_event_id, :value => params[:group_event_id]%>
+                                <%= f.hidden_field :age_group, :value => params[:gage]%>
                                 <td><%=text_field_tag "mem[]"%></td>
                                 <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
                             </tr>

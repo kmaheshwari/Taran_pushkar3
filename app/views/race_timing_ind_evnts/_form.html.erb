@@ -16,7 +16,7 @@
 
 
 <br><br>
-
+<h3>For hit round click here <%= link_to "Hit Round",hit_round_path(:age => params[:race_timing_ind_evnt][:age], :event_id => params[:race_timing_ind_evnt][:event_id])%></h2>
 <div class="col-xs-offset-7"><h4>Number of Students: <%= @mname.length%></h4></div>
 <br>
 
@@ -32,7 +32,7 @@
                             </tr>
                         </thead>
                         <tbody>
-           <% @mname.zip(@midlst).each do |mn,i| %> 
+           <% @final_names.zip(@midlst).each do |mn,i| %> 
 
                             <tr>
                                 <td><%= mn %></td>
@@ -56,7 +56,7 @@
             <!-- Button -->
             <div class="controls span7 text-center">
               <button class="btn btn-success">Submit</button>
-
+              
             </div>
             
                 </div>

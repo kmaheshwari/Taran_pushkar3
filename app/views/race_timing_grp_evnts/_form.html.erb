@@ -16,6 +16,7 @@
 
         
       
+<h3>For hit round click here <%= link_to "Hit Round",ghit_round_path(:gage => params[:race_timing_grp_evnt][:gage], :group_event_id => params[:race_timing_grp_evnt][:group_event_id])%></h2>
 
 <br><br>
 <div class="col-xs-offset-7"><h4>Number of Students: <%= @mname.length%></h4></div>
@@ -34,17 +35,17 @@
                         </thead>
                         
                         <tbody>
-                          <% @pagin.zip(@midlst).each do |mn,i| %>
+                          <% @mname.zip(@midlst).each do |mn,i| %>
                             <tr>
                                 <td><%= mn %></td>
                                 <%= hidden_field_tag "member_id[]", i%>
                                 <%= f.hidden_field :group_event_id, :value => params[:race_timing_grp_evnt][:group_event_id]%>
-                                <%= f.hidden_field :competetion_level_id, :value => params[:race_timing_grp_evnt][:gage]%>
+                                <%= f.hidden_field :age_group, :value => params[:race_timing_grp_evnt][:gage]%>
                                 <td><%= text_field_tag "mem[]" %></td>
                                 <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
                             </tr>
                             <% end %>
-                          <%= paginate @pagin %>
+                          
                         </tbody>
                     </table>
                   <div class="control-group">

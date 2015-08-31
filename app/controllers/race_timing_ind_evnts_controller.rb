@@ -1,4 +1,5 @@
 class RaceTimingIndEvntsController < ApplicationController
+  respond_to :html, :json
   # GET /race_timing_ind_evnts
   # GET /race_timing_ind_evnts.json
   def index
@@ -17,8 +18,9 @@ class RaceTimingIndEvntsController < ApplicationController
     #@race_timing_ind_evnt = RaceTimingIndEvnt.new
     @events=Event.all
     @members=Member.all
+    param1 = params[:age] # "value1"
+    param2 = params[:event_id] # "value2"
     
-
   end
   # GET /race_timing_ind_evnts/1
   # GET /race_timing_ind_evnts/1.json
@@ -37,9 +39,6 @@ class RaceTimingIndEvntsController < ApplicationController
     @race_timing_ind_evnt = RaceTimingIndEvnt.new
     @events=Event.all
     @member=Member.all
-    
-    #@temp=MemberEvent.where("event_id IN (?)", MemberEvent.event_id)
-    #@itemlist = Member.where(['age_group=? AND event_id=?', @race_timing_ind_evnt.age, @race_timing_ind_evnt.evnt])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @race_timing_ind_evnt }
@@ -67,7 +66,8 @@ class RaceTimingIndEvntsController < ApplicationController
     respond_to do |format|
       
       if @race_timing_ind_evnt.save
-        format.html { redirect_to @race_timing_ind_evnt, notice: 'Race timing ind evnt was successfully created.' }
+       
+        format.html { redirect_to @race_timing_ind_evnt, notice: 'Race timing ind evnt was successfully created.',:age =>  params[:race_timing_ind_evnt][:age], :eid => params[:race_timing_ind_evnt][:event_id] }
         format.json { render json: @race_timing_ind_evnt, status: :created, location: @race_timing_ind_evnt }
       else
         format.html { render action: "new" }
@@ -106,8 +106,9 @@ class RaceTimingIndEvntsController < ApplicationController
 
   def hit_round
     @race_timing_ind_evnt = RaceTimingIndEvnt.new
-    @hmid = RaceTimingIndEvnt.group("minute,second,micro_second").limit(8).pluck(:member_id)
+    @hmid = RaceTimingIndEvnt.where("event_id in (?) AND age_group in(?)",params[:event_id],params[:age]).group("minute,second,micro_second").limit(8).pluck(:member_id)
     @mname = Member.where("id in (?)", @hmid).pluck(:name)
+    @final_names = [@mname[6],@mname[4],@mname[2],@mname[0],@mname[1],@mname[3],@mname[5]]
   end
 
   def result
@@ -133,13 +134,10 @@ class RaceTimingIndEvntsController < ApplicationController
       respond_to do |format|
         #format.html { render "/race_timing_ind_evnts/result", :layout => false}
         format.html { render action: "new"}
+        format.html { redirect_to action: "new", :age => params[:race_timing_ind_evnt][:age], :event_id => params[:race_timing_ind_evnt][:event_id]}
       end   
     end 
 
  end
- def show_timings
-  @race_timing_ind_evnt = RaceTimingIndEvnt.where("age_group in (?) AND event_id in (?)",params[:race_timing_ind_evnt][:age],params[:race_timing_ind_evnt][:event_id])
-  @mname = Member.where("id in (?)",@race_timing_ind_evnt.member_id).pluck(:name)
 
- end
 end

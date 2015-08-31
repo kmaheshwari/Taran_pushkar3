@@ -15,6 +15,7 @@ TaranPushkar3::Application.routes.draw do
   get 'hit_round' => 'race_timing_ind_evnts#hit_round'
 
   get 'gsearch' => 'race_timing_grp_evnts#gsearch'
+  get 'ghit_round' => 'race_timing_grp_evnts#ghit_round'
   get 'gresult' => 'race_timing_grp_evnts#gresult'
   resources :race_timing_ind_evnts
   get 'winner' => 'event_winners#winner'
