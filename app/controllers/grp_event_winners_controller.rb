@@ -27,7 +27,7 @@ class GrpEventWinnersController < ApplicationController
     #for finding winners
     @eid=GroupEvent.pluck(:id)
     
-    @age_id = RaceTimingGrpEvnt.pluck(:competetion_level_id).uniq!
+    @age_id = RaceTimingGrpEvnt.pluck(:age_group).uniq!
 
     @final = []
     @eid.each do |el|
@@ -37,7 +37,7 @@ class GrpEventWinnersController < ApplicationController
         @r_list.push(@ename).flatten!
         @age_group=CompetetionLevel.where("id in (?)",ag).pluck(:age_group)
         @r_list.push(@age_group)
-        @res_mid = RaceTimingGrpEvnt.where("group_event_id in (?) AND competetion_level_id in (?)",el,ag).group("gminute,gsecond,gmicro_second").limit(5).pluck(:member_id)
+        @res_mid = RaceTimingGrpEvnt.where("group_event_id in (?) AND age_group in (?)",el,ag).group("gminute,gsecond,gmicro_second").limit(5).pluck(:member_id)
         @list = []
         @res_mid.each do |rm|
           @result = Member.where("id in (?)", rm).pluck(:name)
