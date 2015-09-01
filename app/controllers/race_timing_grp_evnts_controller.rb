@@ -101,7 +101,7 @@ class RaceTimingGrpEvntsController < ApplicationController
     @race_timing_grp_evnt = RaceTimingGrpEvnt.new
     @hmid = RaceTimingGrpEvnt.where("group_event_id in (?) AND age_group in(?)",params[:group_event_id],params[:gage]).group("gminute,gsecond,gmicro_second").limit(9).pluck(:member_id)
     @mname = Member.where("id in (?)", @hmid).pluck(:name)
-    @final_names = [@mname[6],@mname[4],@mname[2],@mname[0],@mname[1],@mname[3],@mname[5]]
+    @final_names = [@mname[6],@mname[4],@mname[2],@mname[0],@mname[1],@mname[3],@mname[5],@mname[7]]
   end
   
   def gresult
