@@ -1,0 +1,43 @@
+<center><h1><strong>Race Timing For Group Events</strong></h1></center>
+
+<div id = "page-wrapper" >
+
+      
+ 
+          <div class="table-responsive">
+                 <div class = " centered ">
+                    <table class="table table-bordered table-hover table-striped" align="centre">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Minutes</th>
+                                <th>Seconds</th>
+                                <th>Micro Seconds</th>
+                                
+                                
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <!--<%= @all_names%>-->
+                            <br><br>
+                                <% @mname.zip(@ftime).each do |m,f| %> 
+                                    
+                                    <tr>
+                                        <td><b><%= m %><b></td>
+                                        <td><%= f[0] %></td>
+                                        <td><%= f[1] %></td>
+                                        <td><%= f[2] %></td>
+                                         
+                                    </tr>
+                                                    
+                                <% end %>
+                            
+                        </tbody>
+                    </table>
+                
+
+</div>
+</div>
+     
+</div>

@@ -130,6 +130,39 @@ class RaceTimingGrpEvntsController < ApplicationController
       end 
           
   end
+  def gfind
+end
+
+ def gshow_timing
+  @mid = RaceTimingGrpEvnt.where("group_event_id IN (?)", params[:race_timing_grp_evnt][:group_event_id]).pluck(:member_id)
+  @midlst=RaceTimingGrpEvnt.where("member_id IN (?) AND competetion_level_id IN (?)",@mid,params[:race_timing_grp_evnt][:gage]).pluck(:member_id)
   
+  @mname=[]
+  @ftime=[]
+  @midlst.each do |m|
+    @time=[]
+    @min=RaceTimingGrpEvnt.where("member_id in (?)",m).pluck(:gminute)
+    @sec=RaceTimingGrpEvnt.where("member_id in (?)",m).pluck(:gsecond)
+    @ms=RaceTimingGrpEvnt.where("member_id in (?)",m).pluck(:gmicro_second)
+    @fmn=Member.where("id IN (?)", m).pluck( :name)
+    @mname.push(@fmn).flatten!
+    @time.push(@min)
+    @time.push(@sec)
+    @time.push(@ms).flatten!
+    @ftime.push(@time)
+  end
+
+  if @mname.nil?
+      respond_to do |format|
+        format.html { redirect_to "/gfind", notice: 'No Record Found'}
+      end 
+    else  
+      respond_to do |format|
+        #format.html { render "/race_timing_ind_evnts/result", :layout => false}
+        format.html { render action: "gshow_timing"}
+        format.html { redirect_to action: "gshow_timing", :age => params[:race_timing_ind_evnt][:age], :event_id => params[:race_timing_ind_evnt][:event_id]}
+      end   
+    end 
+end
 
 end

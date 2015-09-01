@@ -23,6 +23,12 @@ TaranPushkar3::Application.routes.draw do
   get 'download_pdf' => 'event_winners#download_pdf'
   get 'gdownload_pdf' => 'grp_event_winners#gdownload_pdf'
 
+  get 'find' => 'race_timing_ind_evnts#find'
+  get 'show_timing' => 'race_timing_ind_evnts#show_timing'
+
+  get 'gfind' => 'race_timing_grp_evnts#gfind'
+  get 'gshow_timing' => 'race_timing_grp_evnts#gshow_timing'
+
   resources :group_events
 
 
