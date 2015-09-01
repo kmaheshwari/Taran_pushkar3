@@ -1,4 +1,3 @@
-
 <center><h1>Overall Event winners</h1></center>
 
 <div id = "page-wrapper" >
@@ -12,18 +11,23 @@
                             <tr>
                                 <th>Age Group</th>
                                 <th>Overall Winner</th>
+                                <th> Points </th>
                                 
                             </tr>
                         </thead>
 
                         <tbody>
-    <% @age_g.zip(@all_names).each do |ag,an| %> 
+                            <!--<%= @all_names%>-->
+    <% @age_g.each do |ag| %>
+        <% @point.zip(@all_names).each do |p,an| %> 
                             <tr>
                                 <td><b><%= ag %><b></td>
                                 <td><%= an %></td>
+                                 <td><%= p %></td>
                             </tr>
                             
         <% end %>
+    <% end %>
                         </tbody>
                     </table>
                 

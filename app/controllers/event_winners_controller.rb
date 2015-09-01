@@ -78,7 +78,7 @@ class EventWinnersController < ApplicationController
     @age=RaceTimingIndEvnt.pluck(:age_group).uniq!
     @age_g = CompetetionLevel.where("id in (?)",@age).pluck(:age_group)
     @all_names = []
-    EventWinner.update_all( :points => 0)
+    EventWinner.update_all(:points => 0)
     @age.each do |a|
       @eid.each do |e|  
            
@@ -115,9 +115,12 @@ class EventWinnersController < ApplicationController
         end
       end
        @mem=RaceTimingIndEvnt.where("age_group in (?)",a).group("minute,second,micro_second").limit(3).pluck(:member_id)
-       @ewid = EventWinner.where("member_id in (?)",@mem).group("points").limit(1).pluck(:member_id)
+       @ewid = EventWinner.where("member_id in (?)",@mem).group("points").limit(3).pluck(:member_id)
+       @point = EventWinner.where("member_id in (?)",@ewid).pluck(:points)
        @ewname = Member.where("id in (?)",@ewid).pluck(:name)
        @all_names.push(@ewname).flatten!
+       #@all_names.push(@point)
+
     end
     @e=EventWinner.all
 
