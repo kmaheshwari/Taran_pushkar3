@@ -78,6 +78,7 @@ class EventWinnersController < ApplicationController
     @age=RaceTimingIndEvnt.pluck(:age_group).uniq!
     @age_g = CompetetionLevel.where("id in (?)",@age).pluck(:age_group)
     @all_names = []
+    EventWinner.update_all( :points => 0)
     @age.each do |a|
       @eid.each do |e|  
            
