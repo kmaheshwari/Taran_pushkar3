@@ -80,4 +80,16 @@ class GroupEventsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+#for listing students
+def gfind_stud
+end
+def gstud_list
+  @e=GroupEvent.where("id in (?)",params[:group_event][:group_event_id]).pluck(:grp_event_name)
+  @ag=CompetetionLevel.where("id in (?)",params[:group_event][:age]).pluck(:age_group)
+  @mid=MemberGroup.where("group_event_id in (?)",params[:group_event][:group_event_id]).pluck(:member_id)
+  @mname=Member.where("id IN (?) AND competetion_level_id IN (?)",@mid,params[:group_event][:age]).pluck(:name)
+  
+
+end
 end

@@ -29,6 +29,12 @@ TaranPushkar3::Application.routes.draw do
   get 'gfind' => 'race_timing_grp_evnts#gfind'
   get 'gshow_timing' => 'race_timing_grp_evnts#gshow_timing'
 
+  get 'find_stud' => 'events#find_stud'
+  get 'gfind_stud' => 'group_events#gfind_stud'
+
+  get 'stud_list' => 'events#stud_list'
+  get 'gstud_list' => 'group_events#gstud_list'
+
   resources :group_events
 
 

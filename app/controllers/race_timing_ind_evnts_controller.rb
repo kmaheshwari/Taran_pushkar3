@@ -142,9 +142,9 @@ class RaceTimingIndEvntsController < ApplicationController
 
 def find
 end
-
+# for display timing of every participant
  def show_timing
-  @mid = RaceTimingIndEvnt.where("event_id IN (?)", params[:race_timing_ind_evnt][:event_id]).group("minute,second,micro_second").limit(8).pluck(:member_id)
+  @mid = RaceTimingIndEvnt.where("event_id IN (?)", params[:race_timing_ind_evnt][:event_id]).pluck(:member_id)
   @midlst=RaceTimingIndEvnt.where("member_id IN (?) AND age_group IN (?)",@mid,params[:race_timing_ind_evnt][:age]).pluck(:member_id)
   
   @mname=[]
@@ -175,3 +175,5 @@ end
     end 
 end
 end
+
+

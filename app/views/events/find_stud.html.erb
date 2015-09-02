@@ -1,7 +1,7 @@
-<h3 align="center"><strong>Race Timing For Group Events</strong></h3>
+<h3 align="center"><strong>Student List</strong></h3>
 <!--form-->
 
-<%= form_tag(gshow_timing_path, method: 'get') do %>
+<%= form_tag(stud_list_path, method: 'get') do %>
   
 
    <br><br>
@@ -15,9 +15,8 @@
           </div>
           
           <div class="col-sm-3">
-            <%= collection_select( :race_timing_grp_evnt,:gage, CompetetionLevel.all, :id, :age_group , { :prompt => "Please Select" },{ :class => "form-control"} ) %> 
+            <%= collection_select( :event,:age, CompetetionLevel.all, :id, :age_group , { :prompt => "Please Select" },{ :class => "form-control"} ) %> 
           </div>
-
 
         </div>
 
@@ -31,20 +30,17 @@
           </div>
           
           <div class="col-sm-3">
-             <%= collection_select( :race_timing_grp_evnt,:group_event_id, GroupEvent.all, :id, :grp_event_name , { :prompt => "Please Select" },{ :class => "form-control"} ) %> 
+             <%= collection_select( :event,:event_id, Event.all, :id, :event_name , { :prompt => "Please Select" },{ :class => "form-control"} ) %> 
             
           </div>
 
         </div>
 
           <br><br><br>
-          
+          <!--Event Type-->
           
         </div>
         <center><%= submit_tag "Search", :class => 'btn btn-primary' %></center>
-      <% end %>
-
+         
   </div>
-  
-
-
+  <% end %>
