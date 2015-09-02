@@ -67,7 +67,7 @@ class RaceTimingIndEvntsController < ApplicationController
       
       if @race_timing_ind_evnt.save
        
-        format.html { redirect_to @race_timing_ind_evnt, notice: 'Race timing ind evnt was successfully created.',:age =>  params[:race_timing_ind_evnt][:age], :eid => params[:race_timing_ind_evnt][:event_id] }
+        format.html { redirect_to search_path, notice: 'Race timing ind evnt was successfully created.',:age =>  params[:race_timing_ind_evnt][:age], :eid => params[:race_timing_ind_evnt][:event_id] }
         format.json { render json: @race_timing_ind_evnt, status: :created, location: @race_timing_ind_evnt }
       else
         format.html { render action: "new" }

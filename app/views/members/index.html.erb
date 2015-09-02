@@ -39,13 +39,13 @@
                           <td><%= member.comp_name %></td>
                           <td><%= member.name %></td>
                           <td><%= member.dob %></td>
-                          <td><%= l[2].map(&:inspect).join()%></td>
+                          <td><%= l[2].map(&:inspect).join().gsub('"','')%></td>
                           <td><%= member.gender %></td>
                           <td><%= member.district %></td>
                           <td><%= member.state %></td>
                           <td><%= member.schl_club_name %></td>
-                          <td><%= l[0].map(&:inspect).join(', ') %></td>
-                          <td><%= l[1].map(&:inspect).join(', ') %></td>
+                          <td><%= l[0].map(&:inspect).join(', ').gsub('"','') %></td>
+                          <td><%= l[1].map(&:inspect).join(', ').gsub('"','') %></td>
                           <td><%= link_to 'Show', member %></td>
                           <td><%= link_to 'Edit', edit_member_path(member) %></td>
                           <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>

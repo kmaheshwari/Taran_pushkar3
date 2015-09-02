@@ -3,7 +3,7 @@ class RaceTimingIndEvnt < ActiveRecord::Base
   has_many :events, dependent: :destroy
   
   attr_accessor :age , :e_type, :mem
-
+  
   def time
     # returns "12:14:24" as a string
     [minute, second, micro_second].join(".")
