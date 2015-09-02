@@ -134,8 +134,8 @@ class RaceTimingGrpEvntsController < ApplicationController
 end
 
  def gshow_timing
-  @mid = RaceTimingGrpEvnt.where("group_event_id IN (?)", params[:race_timing_grp_evnt][:group_event_id]).pluck(:member_id)
-  @midlst=RaceTimingGrpEvnt.where("member_id IN (?) AND competetion_level_id IN (?)",@mid,params[:race_timing_grp_evnt][:gage]).pluck(:member_id)
+  @mid = RaceTimingGrpEvnt.where("group_event_id IN (?)", params[:race_timing_grp_evnt][:group_event_id]).group("gminute,gsecond,gmicro_second").limit(8).pluck(:member_id)
+  @midlst=RaceTimingGrpEvnt.where("member_id IN (?) AND age_group IN (?)",@mid,params[:race_timing_grp_evnt][:gage]).pluck(:member_id)
   
   @mname=[]
   @ftime=[]

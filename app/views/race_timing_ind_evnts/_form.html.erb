@@ -34,15 +34,15 @@
                         <tbody>
            <% @mname.zip(@midlst).each do |mn,i| %> 
 
-                            <tr>
-                                <td><%= mn %></td>
-                                <%= hidden_field_tag "member_id[]",i%>
-                                <%= f.hidden_field :event_id, :value => params[:race_timing_ind_evnt][:event_id]%>
-                                <%= f.hidden_field :age_group, :value => params[:race_timing_ind_evnt][:age]%>
-                                <td><%=text_field_tag "mem[]"%></td>
-                                <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
-                            </tr>
-                            <% end %>
+                <tr>
+                    <td><%= mn %></td>
+                    <%= hidden_field_tag "member_id[]",i%>
+                    <%= f.hidden_field :event_id, :value => params[:race_timing_ind_evnt][:event_id]%>
+                    <%= f.hidden_field :age_group, :value => params[:race_timing_ind_evnt][:age]%>
+                    <td><%=text_field_tag "mem[]"%></td>
+                    <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
+                </tr>
+           <% end %>
 
                            
                         </tbody>
