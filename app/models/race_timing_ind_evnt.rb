@@ -1,5 +1,5 @@
 class RaceTimingIndEvnt < ActiveRecord::Base
-  attr_accessible :micro_second, :minute, :second,:time ,:age, :e_type, :member_id, :mem, :event_id , :age_group
+  attr_accessible :micro_second, :minute, :second,:time ,:age, :event_type, :member_id, :mem, :event_id , :age_group
   has_many :events, dependent: :destroy
   
   attr_accessor :age , :e_type, :mem

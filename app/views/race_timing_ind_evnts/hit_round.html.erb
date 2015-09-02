@@ -38,6 +38,7 @@
                                 <%= hidden_field_tag "member_id[]",i%>
                                 <%= f.hidden_field :event_id, :value => params[:event_id]%>
                                 <%= f.hidden_field :age_group, :value => params[:age]%>
+                                 <%= f.hidden_field :event_type, :value => "Hit"%>
                                 <td><%=text_field_tag "mem[]"%></td>
                                 <td><%= check_box_tag("", "", true, class: "checkbox") %></td>
                             </tr>

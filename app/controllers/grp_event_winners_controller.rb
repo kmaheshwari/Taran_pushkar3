@@ -26,6 +26,7 @@ class GrpEventWinnersController < ApplicationController
   def new
     #for finding winners
     @eid=GroupEvent.pluck(:id)
+    @hit_eid = RaceTimingGrpEvnt.where("event_type in (?)", "Hit").pluck(:group_event_id).uniq!
     
     @age_id = RaceTimingGrpEvnt.pluck(:age_group).uniq!
 
@@ -33,11 +34,20 @@ class GrpEventWinnersController < ApplicationController
     @eid.each do |el|
       @ename =GroupEvent.where("id in (?)", el).pluck(:grp_event_name)
       @age_id.each do |ag|
+        if @hit_eid
+          if @hit_eid.include?(el)
+            @res_mid = RaceTimingGrpEvnt.where("group_event_id in (?) AND age_group in (?) AND event_type in (?)",el,ag,"Hit").order("gminute,gsecond,gmicro_second").limit(5).pluck(:member_id) 
+          else
+            @res_mid = RaceTimingGrpEvnt.where("group_event_id in (?) AND age_group in (?)",el,ag).order("gminute,gsecond,gmicro_second").limit(5).pluck(:member_id)
+          end 
+        else
+            @res_mid = RaceTimingGrpEvnt.where("group_event_id in (?) AND age_group in (?)",el,ag).order("gminute,gsecond,gmicro_second").limit(5).pluck(:member_id)
+        end
+          
         @r_list =  []
         @r_list.push(@ename).flatten!
         @age_group=CompetetionLevel.where("id in (?)",ag).pluck(:age_group)
         @r_list.push(@age_group)
-        @res_mid = RaceTimingGrpEvnt.where("group_event_id in (?) AND age_group in (?)",el,ag).group("gminute,gsecond,gmicro_second").limit(5).pluck(:member_id)
         @list = []
         @res_mid.each do |rm|
           @result = Member.where("id in (?)", rm).pluck(:name)

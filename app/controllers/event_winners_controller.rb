@@ -27,18 +27,21 @@ class EventWinnersController < ApplicationController
   def new
     #for finding winners
     @eid=Event.pluck(:id)
-    
+    @hit_eid = RaceTimingIndEvnt.where("event_type in (?)", "Hit").pluck(:event_id).uniq!
     @age_id = RaceTimingIndEvnt.pluck(:age_group).uniq!
-    
     @final = []
     @eid.each do |el|
       @ename =Event.where("id in (?)", el).pluck(:event_name)
       @age_id.each do |ag|
+        if @hit_eid.include?(el)
+          @res_mid = RaceTimingIndEvnt.where("event_id in (?) AND age_group in (?) AND event_type in (?)",el,ag,"Hit").order("minute,second,micro_second").limit(5).pluck(:member_id)
+        else
+          @res_mid = RaceTimingIndEvnt.where("event_id in (?) AND age_group in (?)",el,ag).order("minute,second,micro_second").limit(5).pluck(:member_id)
+        end  
         @r_list =  []
         @r_list.push(@ename).flatten!
         @age_group=CompetetionLevel.where("id in (?)",ag).pluck(:age_group)
         @r_list.push(@age_group)
-        @res_mid = RaceTimingIndEvnt.where("event_id in (?) AND age_group in (?)",el,ag).group("minute,second,micro_second").limit(5).pluck(:member_id)
         @list = []
         @res_mid.each do |rm|
           @result = Member.where("id in (?)", rm).pluck(:name)
@@ -47,8 +50,8 @@ class EventWinnersController < ApplicationController
         @r_list.push(@list).flatten!
         @final.push(@r_list)
       end
-      end
-  
+    end
+    
     @event_winner = EventWinner.new
     @race_timing_ind_evnt=RaceTimingIndEvnt.all
 
@@ -82,7 +85,7 @@ class EventWinnersController < ApplicationController
     @age.each do |a|
       @eid.each do |e|  
            
-        @mem=RaceTimingIndEvnt.where("event_id in (?) and age_group in (?)",e,a).group("minute,second,micro_second").limit(3).pluck(:member_id)
+        @mem=RaceTimingIndEvnt.where("event_id in (?) and age_group in (?)",e,a).order("minute,second,micro_second").limit(3).pluck(:member_id)
         @i=1
         @mem.each do |m|
           @pi=0
@@ -114,8 +117,8 @@ class EventWinnersController < ApplicationController
 
         end
       end
-       @mem=RaceTimingIndEvnt.where("age_group in (?)",a).group("minute,second,micro_second").limit(3).pluck(:member_id)
-       @ewid = EventWinner.where("member_id in (?)",@mem).group("points").limit(3).pluck(:member_id)
+       @mem=RaceTimingIndEvnt.where("age_group in (?)",a).order("minute,second,micro_second").limit(3).pluck(:member_id)
+       @ewid = EventWinner.where("member_id in (?)",@mem).order("points").limit(3).pluck(:member_id)
        @point = EventWinner.where("member_id in (?)",@ewid).pluck(:points)
        @ewname = Member.where("id in (?)",@ewid).pluck(:name)
        @all_names.push(@ewname).flatten!

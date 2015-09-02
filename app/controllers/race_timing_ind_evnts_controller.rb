@@ -106,8 +106,12 @@ class RaceTimingIndEvntsController < ApplicationController
 
   def hit_round
     @race_timing_ind_evnt = RaceTimingIndEvnt.new
-    @hmid = RaceTimingIndEvnt.where("event_id in (?) AND age_group in(?)",params[:event_id],params[:age]).group("minute,second,micro_second").limit(8).pluck(:member_id)
-    @mname = Member.where("id in (?)", @hmid).pluck(:name)
+    @hmid = RaceTimingIndEvnt.where("event_id in (?) AND age_group in(?)",params[:event_id],params[:age]).order("minute,second,micro_second").limit(8).pluck(:member_id)
+    @mname = []
+    @hmid.each do |h|
+      @mn = Member.where("id in (?)", h).pluck(:name)
+      @mname.push(@mn).flatten!
+    end
     @final_names = [@mname[6],@mname[4],@mname[2],@mname[0],@mname[1],@mname[3],@mname[5],@mname[7]]
   end
 
